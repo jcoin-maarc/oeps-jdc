@@ -1,0 +1,48 @@
+---
+- submitter_id: incarceration
+  title: Prison Incarceration Rates
+  data_type: Policy
+  description: Prison population rate and prison admission rate by gender and ethnicity
+  coverage: United States 2016
+  source: Variables were obtained from the Vera Institute of Justice. Raw data and more details can be found at https://github.com/vera-institute/incarceration_trends.
+  creator: Center for Spatial Data Science (CSDS) at the University of Chicago
+
+- submitter_id: mouds
+  title: Access to MOUDs
+  data_type: Health
+  description: Distance to nearest MOUD
+  coverage: United States 2020
+  source: Provider locations prescribing Medications for Opioid Overuse Disorder (MOUDs) were sourced from SAMHSA database for Buprenorphine & Methadone. Provider locations for those prescribing Vivitrol/Naltrexone data was scraped from vivitrol.com.
+  creator: Center for Spatial Data Science (CSDS) at the University of Chicago
+
+- submitter_id: pharmacies
+  title: Access to Pharmacies
+  data_type: Health
+  description: Distance to nearest pharmacy
+  coverage: United States 2019
+  source: Pharmacy locations were sourced from the InfoGroup (now Data Axle) 2019 Business and Consumer Historical Datafile, available through the University of Chicago Library. Zip code tract area (ZCTA) and Census Tract files were sourced from the US Census Bureau, TIGER/Line Shapefiles 2018.
+  creator: Center for Spatial Data Science (CSDS) at the University of Chicago
+
+- submitter_id: race_ethnicity
+  title: Race and Ethnicity
+  data_type: Demographic
+  description: Percentages of population defined by categories of race and ethnicity
+  coverage: United States 2014-18
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), table B02001, B03002, at State, County, Tract and ZIP Code Tabulation Area (ZCTA) level. Raw data and more details can be found at https://data.census.gov.
+  creator: Center for Spatial Data Science (CSDS) at the University of Chicago
+
+- submitter_id: covid_cases
+  title: Cumulative Case Count
+  data_type: COVID
+  description: Daily cumulative raw case count (01/21/20 - 03/03/2021)
+  coverage: United States 2020-21
+  source: Variables were obtained from The New York Times. The Times has made data available aggregated from dozens of journalists working to collect and monitor data. Their jouralists communicate with public officials to clarify and categorize cases. Population data used to compute population-adjusted rates were obtained from the 2018 American Comnmunity Survey.
+  creator: Center for Spatial Data Science (CSDS) at the University of Chicago
+
+- submitter_id: geo_boundaries
+  title: Geographic Boundaries
+  data_type: Geographic Boundaries
+  description: Geographic boundary files
+  coverage: United States 2018
+  source: Geographic boundary data are sourced from the U.S. Census 2018 TIGER/Line Shapefiles.
+  creator: Center for Spatial Data Science (CSDS) at the University of Chicago

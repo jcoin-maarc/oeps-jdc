@@ -1,0 +1,245 @@
+---
+- file_name: Prison variables_2016.md
+  core_metadata_collections: 
+      - submitter_id: incarceration
+  data_category: Documentation
+  data_type: Markup
+  data_format: MD
+
+- file_name: PS01_2016_C.csv
+  core_metadata_collections: 
+      - submitter_id: incarceration
+  data_category: Geographical Area Characteristics
+  data_type: County Level Characteristics
+  data_format: CSV
+
+- file_name: Access_MOUDs.md
+  core_metadata_collections: 
+      - submitter_id: mouds
+  data_category: Documentation
+  data_type: Markup
+  data_format: MD
+
+- file_name: Access01_T.csv
+  core_metadata_collections: 
+      - submitter_id: mouds
+  data_category: Geographical Area Characteristics
+  data_type: Tract Level Characteristics
+  data_format: CSV
+
+- file_name: Access01_Z.csv
+  core_metadata_collections: 
+      - submitter_id: mouds
+  data_category: Geographical Area Characteristics
+  data_type: Zip Level Characteristics
+  data_format: CSV
+
+- file_name: Access_Pharmacies_MinDistance.md
+  core_metadata_collections: 
+      - submitter_id: pharmacies
+  data_category: Documentation
+  data_type: Markup
+  data_format: MD
+
+- file_name: Access05_T.csv
+  core_metadata_collections: 
+      - submitter_id: pharmacies
+  data_category: Geographical Area Characteristics
+  data_type: Tract Level Characteristics
+  data_format: CSV
+
+- file_name: Access05_Z.csv
+  core_metadata_collections: 
+      - submitter_id: pharmacies
+  data_category: Geographical Area Characteristics
+  data_type: Zip Level Characteristics
+  data_format: CSV
+
+- file_name: Race_Ethnicity_2018.md
+  core_metadata_collections: 
+      - submitter_id: race_ethnicity
+  data_category: Documentation
+  data_type: Markup
+  data_format: MD
+
+- file_name: DS01_2018_T.csv
+  core_metadata_collections: 
+      - submitter_id: race_ethnicity
+  data_category: Geographical Area Characteristics
+  data_type: Tract Level Characteristics
+  data_format: CSV
+
+- file_name: DS01_2018_Z.csv
+  core_metadata_collections: 
+      - submitter_id: race_ethnicity
+  data_category: Geographical Area Characteristics
+  data_type: Zip Level Characteristics
+  data_format: CSV
+
+- file_name: DS01_2018_C.csv
+  core_metadata_collections: 
+      - submitter_id: race_ethnicity
+  data_category: Geographical Area Characteristics
+  data_type: County Level Characteristics
+  data_format: CSV
+
+- file_name: DS01_2018_S.csv
+  core_metadata_collections: 
+      - submitter_id: race_ethnicity
+  data_category: Geographical Area Characteristics
+  data_type: State Level Characteristics
+  data_format: CSV
+
+- file_name: COVID.md
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Documentation
+  data_type: Markup
+  data_format: MD
+
+- file_name: COVID01_S.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Geographical Area Characteristics
+  data_type: State Level Characteristics
+  data_format: CSV
+
+- file_name: COVID01_C.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Geographical Area Characteristics
+  data_type: County Level Characteristics
+  data_format: CSV
+
+- file_name: COVID02_S.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Geographical Area Characteristics
+  data_type: State Level Characteristics
+  data_format: CSV
+
+- file_name: COVID02_C.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Geographical Area Characteristics
+  data_type: County Level Characteristics
+  data_format: CSV
+
+- file_name: COVID03_S.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Geographical Area Characteristics
+  data_type: State Level Characteristics
+  data_format: CSV
+
+- file_name: COVID03_C.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Geographical Area Characteristics
+  data_type: County Level Characteristics
+  data_format: CSV
+
+- file_name: COVID04_S.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Geographical Area Characteristics
+  data_type: State Level Characteristics
+  data_format: CSV
+
+- file_name: COVID04_C.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Geographical Area Characteristics
+  data_type: County Level Characteristics
+  data_format: CSV
+
+- file_name: GeographicBoundaries_2018.md
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Documentation
+  data_type: Markup
+  data_format: MD
+
+- file_name: states2018.shp
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: State Boundaries
+  data_format: SHP
+
+- file_name: states2018.dbf
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: State Boundaries
+  data_format: DBF
+
+- file_name: states2018.prj
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: State Boundaries
+  data_format: PRJ
+
+- file_name: counties2018.shp
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: County Boundaries
+  data_format: SHP
+
+- file_name: counties2018.dbf
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: County Boundaries
+  data_format: DBF
+
+- file_name: counties2018.prj
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: County Boundaries
+  data_format: PRJ
+
+- file_name: tracts2018.shp
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Tract Boundaries
+  data_format: SHP
+
+- file_name: tracts2018.dbf
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Tract Boundaries
+  data_format: DBF
+
+- file_name: tracts2018.prj
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Tract Boundaries
+  data_format: PRJ
+
+- file_name: zctas2018.shp
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Zip Boundaries
+  data_format: SHP
+
+- file_name: zctas2018.dbf
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Zip Boundaries
+  data_format: DBF
+
+- file_name: zctas2018.prj
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Zip Boundaries
+  data_format: PRJ
