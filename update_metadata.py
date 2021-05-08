@@ -24,6 +24,10 @@ def update_core_metadata(sub):
     with open('metadata/core_metadata_collection.yml', 'r') as stream:
         cmdc_list = [dict(cmdc, **template) for cmdc in yaml.safe_load(stream)]
     
+    # Add creator property
+    creator = 'Center for Spatial Data Science (CSDS) at the University of Chicago'
+    cmdc_list = [dict(cmdc, creator=creator) for cmdc in cmdc_list]
+    
     records = json.loads(json.dumps(cmdc_list))
     sub.submit_record(PROGRAM, PROJECT, records)
 
@@ -43,9 +47,10 @@ def get_files(index):
     df['updated_date'] = pd.to_datetime(df.updated_date)
     df['md5sum'] = df.hashes.map(lambda x: x.get('md5'))
     df['file_size'] = df['size'].fillna(0).astype(np.int64)
+    df.rename(columns={'did':'object_id'}, inplace=True)
     
     df = df.sort_values('updated_date').groupby('file_name').tail(1)
-    df = df[['file_name','submitter_id','file_size','md5sum']]
+    df = df[['object_id','file_name','submitter_id','file_size','md5sum']]
     files = df.set_index('file_name').T.to_dict('dict')
     return files
 
@@ -60,6 +65,10 @@ def update_reference_file(index, sub):
     
     # Prune any files that haven't been uploaded yet
     rf_list = [f for f in rf_list if 'submitter_id' in f]
+    
+    # TODO Remove once pending data dictionary change has been made
+    rf_list = [dict(f, data_category='Other', data_type='Other',
+                    data_format='TXT') for f in rf_list]
     
     records = json.loads(json.dumps(rf_list))
     sub.submit_record(PROGRAM, PROJECT, records)
