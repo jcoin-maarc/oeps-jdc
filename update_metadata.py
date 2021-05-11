@@ -42,7 +42,8 @@ def add_submitter_id(df, file_name='file_name', did='did'):
 def get_files(index):
     """Get file objects uploaded to Commons"""
     
-    df = pd.DataFrame(index.get_all_records())
+    # Note: limit=none (default) doesn't seem to work
+    df = pd.DataFrame(index.get_all_records(limit=1024))
     add_submitter_id(df)
     df['updated_date'] = pd.to_datetime(df.updated_date)
     df['md5sum'] = df.hashes.map(lambda x: x.get('md5'))
@@ -65,10 +66,6 @@ def update_reference_file(index, sub):
     
     # Prune any files that haven't been uploaded yet
     rf_list = [f for f in rf_list if 'submitter_id' in f]
-    
-    # TODO Remove once pending data dictionary change has been made
-    rf_list = [dict(f, data_category='Other', data_type='Other',
-                    data_format='TXT') for f in rf_list]
     
     records = json.loads(json.dumps(rf_list))
     sub.submit_record(PROGRAM, PROJECT, records)
