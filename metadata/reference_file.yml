@@ -1,192 +1,10 @@
 ---
-- file_name: Prison variables_2016.md
-  core_metadata_collections: 
-      - submitter_id: incarceration
-  data_category: Documentation
-  data_type: Markup
-  data_format: MD
-
-- file_name: PS01_2016_C.csv
-  core_metadata_collections: 
-      - submitter_id: incarceration
-  data_category: Geographical Area Characteristics
-  data_type: County Level Characteristics
-  data_format: CSV
-
-- file_name: Access_MOUDs.md
-  core_metadata_collections: 
-      - submitter_id: mouds
-  data_category: Documentation
-  data_type: Markup
-  data_format: MD
-
-- file_name: Access01_T.csv
-  core_metadata_collections: 
-      - submitter_id: mouds
-  data_category: Geographical Area Characteristics
-  data_type: Tract Level Characteristics
-  data_format: CSV
-
-- file_name: Access01_Z.csv
-  core_metadata_collections: 
-      - submitter_id: mouds
-  data_category: Geographical Area Characteristics
-  data_type: Zip Level Characteristics
-  data_format: CSV
-
-- file_name: Access_Pharmacies_MinDistance.md
-  core_metadata_collections: 
-      - submitter_id: pharmacies
-  data_category: Documentation
-  data_type: Markup
-  data_format: MD
-
-- file_name: Access05_T.csv
-  core_metadata_collections: 
-      - submitter_id: pharmacies
-  data_category: Geographical Area Characteristics
-  data_type: Tract Level Characteristics
-  data_format: CSV
-
-- file_name: Access05_Z.csv
-  core_metadata_collections: 
-      - submitter_id: pharmacies
-  data_category: Geographical Area Characteristics
-  data_type: Zip Level Characteristics
-  data_format: CSV
-
-- file_name: Race_Ethnicity_2018.md
-  core_metadata_collections: 
-      - submitter_id: race_ethnicity
-  data_category: Documentation
-  data_type: Markup
-  data_format: MD
-
-- file_name: DS01_2018_T.csv
-  core_metadata_collections: 
-      - submitter_id: race_ethnicity
-  data_category: Geographical Area Characteristics
-  data_type: Tract Level Characteristics
-  data_format: CSV
-
-- file_name: DS01_2018_Z.csv
-  core_metadata_collections: 
-      - submitter_id: race_ethnicity
-  data_category: Geographical Area Characteristics
-  data_type: Zip Level Characteristics
-  data_format: CSV
-
-- file_name: DS01_2018_C.csv
-  core_metadata_collections: 
-      - submitter_id: race_ethnicity
-  data_category: Geographical Area Characteristics
-  data_type: County Level Characteristics
-  data_format: CSV
-
-- file_name: DS01_2018_S.csv
-  core_metadata_collections: 
-      - submitter_id: race_ethnicity
-  data_category: Geographical Area Characteristics
-  data_type: State Level Characteristics
-  data_format: CSV
-
-- file_name: COVID.md
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Documentation
-  data_type: Markup
-  data_format: MD
-
-- file_name: COVID01_S.csv
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Geographical Area Characteristics
-  data_type: State Level Characteristics
-  data_format: CSV
-
-- file_name: COVID01_C.csv
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Geographical Area Characteristics
-  data_type: County Level Characteristics
-  data_format: CSV
-
-- file_name: COVID02_S.csv
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Geographical Area Characteristics
-  data_type: State Level Characteristics
-  data_format: CSV
-
-- file_name: COVID02_C.csv
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Geographical Area Characteristics
-  data_type: County Level Characteristics
-  data_format: CSV
-
-- file_name: COVID03_S.csv
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Geographical Area Characteristics
-  data_type: State Level Characteristics
-  data_format: CSV
-
-- file_name: COVID03_C.csv
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Geographical Area Characteristics
-  data_type: County Level Characteristics
-  data_format: CSV
-
-- file_name: COVID04_S.csv
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Geographical Area Characteristics
-  data_type: State Level Characteristics
-  data_format: CSV
-
-- file_name: COVID04_C.csv
-  core_metadata_collections: 
-      - submitter_id: covid_cases
-  data_category: Geographical Area Characteristics
-  data_type: County Level Characteristics
-  data_format: CSV
-
 - file_name: GeographicBoundaries_2018.md
   core_metadata_collections: 
       - submitter_id: geo_boundaries
-  data_category: Documentation
-  data_type: Markup
+  data_category: Geographic Boundaries
+  data_type: Geographic Boundaries
   data_format: MD
-
-- file_name: states2018.shp
-  core_metadata_collections: 
-      - submitter_id: geo_boundaries
-  data_category: Geographic Boundaries
-  data_type: State Boundaries
-  data_format: SHP
-
-- file_name: states2018.dbf
-  core_metadata_collections: 
-      - submitter_id: geo_boundaries
-  data_category: Geographic Boundaries
-  data_type: State Boundaries
-  data_format: DBF
-
-- file_name: states2018.prj
-  core_metadata_collections: 
-      - submitter_id: geo_boundaries
-  data_category: Geographic Boundaries
-  data_type: State Boundaries
-  data_format: PRJ
-
-- file_name: counties2018.shp
-  core_metadata_collections: 
-      - submitter_id: geo_boundaries
-  data_category: Geographic Boundaries
-  data_type: County Boundaries
-  data_format: SHP
 
 - file_name: counties2018.dbf
   core_metadata_collections: 
@@ -202,33 +20,75 @@
   data_type: County Boundaries
   data_format: PRJ
 
-- file_name: tracts2018.shp
+- file_name: counties2018.shp
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
-  data_type: Tract Boundaries
+  data_type: County Boundaries
+  data_format: SHP 
+
+- file_name: counties2018.shx
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: County Boundaries
+  data_format: SHX
+
+- file_name: states2018.dbf
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: State Boundaries
+  data_format: DBF
+
+- file_name: states2018.prj
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: State Boundaries
+  data_format: PRJ
+
+- file_name: states2018.shp
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: State Boundaries
   data_format: SHP
+
+- file_name: states2018.shx
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: State Boundaries
+  data_format: SHX
 
 - file_name: tracts2018.dbf
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
-  data_type: Tract Boundaries
+  data_type: Tracts Boundaries
   data_format: DBF
 
 - file_name: tracts2018.prj
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
-  data_type: Tract Boundaries
+  data_type: Tracts Boundaries
   data_format: PRJ
 
-- file_name: zctas2018.shp
+- file_name: tracts2018.shp
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
-  data_type: Zip Boundaries
+  data_type: Tracts Boundaries
   data_format: SHP
+
+- file_name: tracts2018.shx
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Tracts Boundaries
+  data_format: SHX
 
 - file_name: zctas2018.dbf
   core_metadata_collections: 
@@ -243,3 +103,1466 @@
   data_category: Geographic Boundaries
   data_type: Zip Boundaries
   data_format: PRJ
+
+- file_name: zctas2018.shp
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Zip Boundaries
+  data_format: SHP
+
+- file_name: zctas2018.shx
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Geographic Boundaries
+  data_type: Zip Boundaries
+  data_format: SHX
+
+- file_name: crosswalk.md
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Crosswalk 
+  data_type: Crosswalk 
+  data_format: MD
+
+- file_name: COUNTY_ZIP.xlsx
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Crosswalk 
+  data_type: County Boundaries
+  data_format: xlsx
+
+- file_name: TRACT_ZIP.xlsx
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Crosswalk 
+  data_type: Tract Boundaries
+  data_format: xlsx
+
+- file_name: ZIP_COUNTY.xlsx
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Crosswalk 
+  data_type: County Boundaries
+  data_format: xlsx
+
+- file_name: ZIP_TRACT.xlsx
+  core_metadata_collections: 
+      - submitter_id: geo_boundaries
+  data_category: Crosswalk 
+  data_type: Tract Boundaries
+  data_format: xlsx
+
+- file_name: Access_MOUDs.md
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to MOUDS 
+  data_type: Health
+  data_format: MD
+
+- file_name: Access01_C.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to MOUDS
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access01_T.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to MOUDS
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access01_Z.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to MOUDS
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access_FQHCs_MinDistance.md
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Health Center
+  data_type: Health
+  data_format: MD
+
+- file_name: Access02_T.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Health Center
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access02_Z.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Health Center
+  data_type: Health
+  data_format: CSV
+
+- file_name: Acesss_Hospitals_MinDistance.md
+  core_metadata_collections:
+      - submitter_id: access
+  data_category: Access to Hospitals
+  data_type: Health
+  data_format: MD
+
+- file_name: Access03_Z.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Hospitals
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access03_Z.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Hospitals
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access_Pharmacies_MinDistance.md
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Pharmacies
+  data_type: Health
+  data_format: MD
+
+- file_name: Access04_T.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Pharmacies
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access04_Z.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Pharmacies
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access_MentalHealth_MinDistance.md
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Mental Health Providers
+  data_type: Health
+  data_format: MD
+
+- file_name: Access05_T.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Mental Health Providers
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access05_Z.csv
+  core_metadata_collections: 
+      - submitter_id: access
+  data_category: Access to Mental Health Providers
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access_SubstanceUseTreatment.md
+  core_metadata_collections:
+      - submitter_id: access
+  data_category: Access to Substance Use Treatment Facilities
+  data_type: Health
+  data_format: MD
+
+- file_name: Access06_T.csv
+  core_metadata_collections:
+      - submitter_id: access
+  data_category: Access to Substance Use Treatment Facilities
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access06_Z.csv
+  core_metadata_collections:
+      - submitter_id: access
+  data_category: Access to Substance Use Treatment Facilities
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access_OpioidUseTreatment.md
+  core_metadata_collections:
+      - submitter_id: access
+  data_category: Access to Opioid Treatment Programs
+  data_type: Health
+  data_format: MD
+
+- file_name: Access07_T.csv
+  core_metadata_collections:
+      - submitter_id: access
+  data_category: Access to Opioid Treatment Programs
+  data_type: Health
+  data_format: CSV
+
+- file_name: Access07_Z.csv
+  core_metadata_collections:
+      - submitter_id: access
+  data_category: Access to Opioid Treatment Programs
+  data_type: Health
+  data_format: CSV
+
+- file_name: COVID01_C.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Cumulative Case Count
+  data_type: COVID 
+  data_format: CSV
+
+- file_name: COVID01_S.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Cumulative Case Count
+  data_type: COVID
+  data_format: CSV
+
+- file_name: COVID02_C.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Adjusted Case Count per 100K
+  data_type: COVID 
+  data_format: CSV
+
+- file_name: COVID02_S.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Adjusted Case Count per 100K
+  data_type: COVID 
+  data_format: CSV
+
+- file_name: COVID03_C.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: 7-day Average Case Count
+  data_type: COVID
+  data_format: CSV
+
+- file_name: COVID03_S.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: 7-day Average Case Count
+  data_type: COVID
+  data_format: CSV
+
+- file_name: COVID04_C.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Historical 7-day Average Adjusted Case Count per 100K
+  data_type: COVI D
+  data_format: CSV
+
+- file_name: COVID04_S.csv
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Historical 7-day Average Adjusted Case Count per 100K
+  data_type: COVID
+  data_format: CSV
+
+- file_name: DS01_S.csv
+  core_metadata_collections: 
+      - submitter_id: age
+  data_category: Age
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_C.csv
+  core_metadata_collections: 
+      - submitter_id: age
+  data_category: Age
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_T.csv
+  core_metadata_collections: 
+         - submitter_id: age
+  data_category: Age
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_Z.csv
+  core_metadata_collections: 
+       - submitter_id: age
+  data_category: Age
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_S.csv
+  core_metadata_collections: 
+      - submitter_id: race_ethnicity
+  data_category: Race and Ethnicity
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_C.csv
+  core_metadata_collections: 
+      - submitter_id: race_ethnicity
+  data_category: Race and Ethnicity
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_T.csv
+  core_metadata_collections: 
+         - submitter_id: race_ethnicity
+  data_category: Race and Ethnicity
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_Z.csv
+  core_metadata_collections: 
+       - submitter_id: race_ethnicity
+  data_category: Race and Ethnicity
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_S.csv
+  core_metadata_collections: 
+      - submitter_id: disability
+  data_category: Population with a Disability
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_C.csv
+  core_metadata_collections: 
+      - submitter_id: disability
+  data_category: Population with a Disability
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_T.csv
+  core_metadata_collections: 
+         - submitter_id: disability
+  data_category: Population with a Disability
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_Z.csv
+  core_metadata_collections: 
+       - submitter_id: disability
+  data_category: Population with a Disability
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_S.csv
+  core_metadata_collections: 
+      - submitter_id: educational_attainment
+  data_category: Educational Attainment
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_C.csv
+  core_metadata_collections: 
+      - submitter_id: educational_attainment
+  data_category: Educational Attainment
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_T.csv
+  core_metadata_collections: 
+         - submitter_id: educational_attainment
+  data_category: Educational Attainment
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS01_Z.csv
+  core_metadata_collections: 
+       - submitter_id: educational_attainment
+  data_category: Educational Attainment
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS02_2014_T.csv
+  core_metadata_collections: 
+      - submitter_id: sdoh
+  data_category: Social Determinants of Health (SDOH)
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS02_C.csv
+  core_metadata_collections: 
+      - submitter_id: incarceration
+  data_category: Prison Incarceration Rates
+  data_type: Prison Incarceration
+  data_format: CSV
+
+- file_name: DS03_C.csv
+  core_metadata_collections: 
+      - submitter_id: svi
+  data_category: Social Vulnerability Index (SVI)
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS03_T.csv
+  core_metadata_collections: 
+      - submitter_id: svi
+  data_category: Social Vulnerability Index (SVI)
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS03_Z.csv
+  core_metadata_collections: 
+      - submitter_id: svi
+  data_category: Social Vulnerability Index (SVI)
+  data_type: Demographic
+  data_format: CSV  
+
+- file_name: DS04_T.csv
+  core_metadata_collections:
+      - submitter_id: veteran
+  data_category: Veteran Population
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS04_Z.csv
+  core_metadata_collections:
+      - submitter_id: veteran
+  data_category: Veteran Population
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS04_C.csv
+  core_metadata_collections:
+      - submitter_id: veteran
+  data_category: Veteran Population
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS04_S.csv
+  core_metadata_collections:
+      - submitter_id: veteran
+  data_category: Veteran Population
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS05_T.csv
+  core_metadata_collections:
+      - submitter_id: homeless
+  data_category: Homeless Population
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS05_Z.csv
+  core_metadata_collections:
+      - submitter_id: homeless
+  data_category: Homeless Population
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS05_C.csv
+  core_metadata_collections:
+      - submitter_id: homeless
+  data_category: Homeless Population
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: DS05_S.csv
+  core_metadata_collections:
+      - submitter_id: homeless
+  data_category: Homeless Population
+  data_type: Demographic
+  data_format: CSV
+
+- file_name: EC01_2018_C.csv
+  core_metadata_collections: 
+      - submitter_id: employment
+  data_category: Employment Trends
+  data_type: Economic
+  data_format: CSV
+
+- file_name: EC01_2018_S.csv
+  core_metadata_collections: 
+      - submitter_id: employment
+  data_category: Employment Trends
+  data_type: Economic
+  data_format: CSV
+
+- file_name: EC01_2018_T.csv
+  core_metadata_collections: 
+      - submitter_id: employment
+  data_category: Employment Trends
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC01_2018_Z.csv
+  core_metadata_collections: 
+      - submitter_id: employment
+  data_category: Employment Trends
+  data_type: Economic
+  data_format: CSV
+
+- file_name: EC02_2018_C.csv
+  core_metadata_collections: 
+      - submitter_id: essential_workers
+  data_category: Essential Worker Jobs
+  data_type: COVID
+  data_format: CSV
+
+- file_name: EC02_2018_S.csv
+  core_metadata_collections: 
+      - submitter_id: essential_workers
+  data_category: Essential Worker Jobs
+  data_type: COVID
+  data_format: CSV
+
+- file_name: EC02_2018_T.csv
+  core_metadata_collections: 
+      - submitter_id: essential_workers
+  data_category: Essential Worker Jobs
+  data_type: COVID
+  data_format: CSV
+
+- file_name: EC02_2018_Z.csv
+  core_metadata_collections: 
+      - submitter_id: essential_workers
+  data_category: Essential Worker Jobs
+  data_type: COVID
+  data_format: CSV
+
+- file_name: EC03_2018_C.csv
+  core_metadata_collections: 
+    - submitter_id: employment
+  data_category: Unemployment Rates 
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_S.csv
+  core_metadata_collections: 
+    - submitter_id: employment
+  data_category: Unemployment Rates 
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_T.csv
+  core_metadata_collections: 
+    - submitter_id: employment
+  data_category: Unemployment Rates 
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_Z.csv
+  core_metadata_collections: 
+    - submitter_id: employment
+  data_category: Unemployment Rates 
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_C.csv
+  core_metadata_collections: 
+    - submitter_id: poverty
+  data_category: Poverty Rate
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_S.csv
+  core_metadata_collections: 
+    - submitter_id: poverty
+  data_category: Poverty Rate
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_T.csv
+  core_metadata_collections: 
+    - submitter_id: poverty
+  data_category: Poverty Rate
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_Z.csv
+  core_metadata_collections: 
+    - submitter_id: poverty
+  data_category: Poverty Rate
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_C.csv
+  core_metadata_collections: 
+    - submitter_id: income
+  data_category: Per Capita Income
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_S.csv
+  core_metadata_collections: 
+    - submitter_id: income
+  data_category: Per Capita Income
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_T.csv
+  core_metadata_collections: 
+    - submitter_id: income
+  data_category: Per Capita Income
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC03_2018_Z.csv
+  core_metadata_collections: 
+    - submitter_id: income
+  data_category: Per Capita Income
+  data_type: Economic 
+  data_format: CSV
+
+- file_name: EC04_C.csv
+  core_metadata_collections: 
+      - submitter_id: foreclosure
+  data_category: Foreclosure Rates
+  data_type: Economic
+  data_format: CSV
+
+- file_name: EC04_S.csv
+  core_metadata_collections: 
+      - submitter_id: foreclosure
+  data_category: Foreclosure Rates
+  data_type: Economic
+  data_format: CSV
+
+- file_name: EC04_T.csv
+  core_metadata_collections: 
+      - submitter_id: foreclosure
+  data_category: Foreclosure Rates
+  data_type: Economic
+  data_format: CSV
+
+- file_name: Housing_2018.md
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Occupancy Rate
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE01_C.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Occupancy Rate
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_Z.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Occupancy Rate
+  data_type: Built Environment
+  data_format: CSV  
+
+- file_name: BE01_S.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Occupancy Rate
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_T.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Occupancy Rate
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Housing_2018.md
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Vacancy Rate
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE01_C.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Vacancy Rate
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_Z.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Vacancy Rate
+  data_type: Built Environment
+  data_format: CSV  
+
+- file_name: BE01_S.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Vacancy Rate
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_T.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Vacancy Rate
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Housing_2018.md
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Long Term Occupancy
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE01_C.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Long Term Occupancy
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_Z.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Long Term Occupancy
+  data_type: Built Environment
+  data_format: CSV  
+
+- file_name: BE01_S.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Long Term Occupancy
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_T.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Long Term Occupancy
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Housing_2018.md
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Mobile Homes
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE01_C.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Mobile Homes
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_Z.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Mobile Homes
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_S.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Mobile Homes
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_T.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Mobile Homes
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Housing_2018.md
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Rental Rates
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE01_C.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Rental Rates
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_Z.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Rental Rates
+  data_type: Built Environment
+  data_format: CSV  
+
+- file_name: BE01_S.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Rental Rates
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_T.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Rental Rates
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Housing_2018.md
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Unit Density
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE01_C.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Unit Density
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_Z.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Unit Density
+  data_type: Built Environment
+  data_format: CSV  
+
+- file_name: BE01_S.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Unit Density
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE01_T.csv
+  core_metadata_collections:
+      - submitter_id: housing
+  data_category: Housing Unit Density
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Rural_Urban_Classification_County.md
+  core_metadata_collections:
+      - submitter_id: urban_rural
+  data_category: Urban/Suburban/Rural Classification
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: Rural_Urban_Classification_T_Z.md
+  core_metadata_collections:
+      - submitter_id: urban_rural
+  data_category: Urban/Suburban/Rural Classification
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE02_RUCA_C.csv
+  core_metadata_collections:
+      - submitter_id: urban_rural
+  data_category: Urban/Suburban/Rural Classification
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE02_RUCA_T.csv
+  core_metadata_collections:
+      - submitter_id: urban_rural
+  data_category: Urban/Suburban/Rural Classification
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE02_RUCA_Z.csv
+  core_metadata_collections:
+      - submitter_id: urban_rural
+  data_category: Urban/Suburban/Rural Classification
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: AlcoholOutlets_2018.md
+  core_metadata_collections:
+      - submitter_id: alcohol_outlet
+  data_category: Alcohol Outlet Density
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE03_C.csv
+  core_metadata_collections:
+      - submitter_id: alcohol_outlet
+  data_category: Alcohol Outlet Density
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE03_Z.csv
+  core_metadata_collections:
+      - submitter_id: alcohol_outlet
+  data_category: Alcohol Outlet Density
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE03_S.csv
+  core_metadata_collections:
+      - submitter_id: alcohol_outlet
+  data_category: Alcohol Outlet Density
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: BE03_T.csv
+  core_metadata_collections:
+      - submitter_id: alcohol_outlet
+  data_category: Alcohol Outlet Density
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Overlay.md
+  core_metadata_collections:
+      - submitter_id: segregation
+  data_category: Hypersegregated Cities
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE04_C.csv
+  core_metadata_collections:
+      - submitter_id: segregation
+  data_category: Hypersegregated Cities
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Overlay.md
+  core_metadata_collections:
+      - submitter_id: black_belt
+  data_category: Southern Black Belt
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE04_C.csv
+  core_metadata_collections:
+      - submitter_id: black_belt
+  data_category: Southern Black Belt
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Overlay.md
+  core_metadata_collections:
+      - submitter_id: reservations
+  data_category: Native American Reservations
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE04_C.csv
+  core_metadata_collections:
+      - submitter_id: reservations
+  data_category: Native American Reservations
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Residential_Seg_Indices.md
+  core_metadata_collections:
+      - submitter_id: segregation_indices
+  data_category: Residential Segregation Indices
+  data_type: Built Environment
+  data_format: MD
+
+- file_name: BE05_C.csv
+  core_metadata_collections:
+      - submitter_id: segregation_indices
+  data_category: Residential Segregation Indices
+  data_type: Built Environment
+  data_format: CSV
+
+- file_name: Health_DrugDeaths.md
+  core_metadata_collections:
+      - submitter_id: death
+  data_type: Health
+  data_format: MD
+
+- file_name: Health01_C.csv
+  core_metadata_collections: 
+      - submitter_id: death
+  data_category: Drug-related death rate
+  data_type: Health
+  data_format: CSV
+
+- file_name: Health01_S.csv
+  core_metadata_collections: 
+      - submitter_id: death
+  data_category: Drug-related death rate
+  data_type: Health
+  data_format: CSV
+
+- file_name: HepC_rate.md
+  core_metadata_collections:
+      - submitter_id: infection
+  data_category: Hepatitis C infection rate
+  data_type: Health
+  data_format: MD
+
+- file_name: Health02_C.csv
+  core_metadata_collections: 
+      - submitter_id: infection
+  data_category: Hepatitis C infection rate
+  data_type: Health
+  data_format: CSV
+
+- file_name: Health02_S.csv
+  core_metadata_collections: 
+      - submitter_id: infection
+  data_category: Hepatitis C infection rate
+  data_type: Health
+  data_format: CSV
+
+- file_name: Health_PCPs.md
+  core_metadata_collections:
+      - submitter_id: physicians
+  data_category: Physicians
+  data_type: Health
+  data_format: MD
+
+- file_name: Health03_C.csv
+  core_metadata_collections: 
+      - submitter_id: physicians
+  data_category: Physicians
+  data_type: Heatlh
+  data_format: CSV
+
+- file_name: Health03_S.csv
+  core_metadata_collections: 
+      - submitter_id: physicians
+  data_category: Physicians
+  data_type: Health
+  data_format: CSV
+
+- file_name: Health03_T.csv
+  core_metadata_collections: 
+      - submitter_id: physicians
+  data_category: Physicians
+  data_type: Health
+  data_format: CSV
+
+- file_name: Prison variables_2016.md
+  core_metadata_collections:
+      - submitter_id: incarceration
+  data_category: Prison Incarceration Rates
+  data_type: Policy
+  data_format: MD
+
+- file_name: PS01_2016_C.csv
+  core_metadata_collections: 
+      - submitter_id: incarceration
+  data_category: Prison Incarceration Rates
+  data_type: Policy
+  data_format: CSV
+
+- file_name: PS02_2017_C.csv
+  core_metadata_collections: 
+      - submitter_id: incarceration
+  data_category: Jail Incarceration Rates
+  data_type: Policy
+  data_format: CSV
+
+- file_name: PDMP_2017.md
+  core_metadata_collections: 
+      - submitter_id: PDMP
+  data_category: Prescription Drug Monitoring Programs (PDMP)
+  data_type: Policy
+  data_format: MD
+
+- file_name: PS03_2017_S.csv
+  core_metadata_collections: 
+      - submitter_id: PDMP
+  data_category: Prescription Drug Monitoring Programs (PDMP)
+  data_type: Policy
+  data_format: CSV
+
+- file_name: GSL_2018.md
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: Good Samaritan Laws
+  data_type: Policy
+  data_format: MD
+
+- file_name: PS04_2018_S.csv
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: Good Samaritan Laws
+  data_type: Policy
+  data_format: CSV
+
+- file_name: NAL_2017.md
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: Naloxone Access Laws
+  data_type: Policy
+  data_format: MD
+
+- file_name: PS05_2017_S.csv
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: Naloxone Access Laws
+  data_type: Policy
+  data_format: CSV
+
+- file_name: MedExp_2019.md
+  core_metadata_collections: 
+      - submitter_id: insurance
+  data_category: Medicaid Expenditure
+  data_type: Policy
+  data_format: MD
+
+- file_name: PS06_2019_S.csv
+  core_metadata_collections: 
+      - submitter_id: insurance
+  data_category: Medicaid Expenditure
+  data_type: Policy
+  data_format: CSV
+
+- file_name: MedExpan_2018.md
+  core_metadata_collections: 
+      - submitter_id: insurance
+  data_category: Medicaid Expansion
+  data_type: Policy
+  data_format: MD
+
+- file_name: PS07_2018_S.csv
+  core_metadata_collections: 
+      - submitter_id: insurance
+  data_category: Medicaid Expansion
+  data_type: Policy
+  data_format: CSV
+
+- file_name: Syringe.md
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: Syringe Services Laws
+  data_type: Policy
+  data_format: CSV
+
+- file_name: PS08_2019_S.csv
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: Syringe Services Laws
+  data_type: Policy
+  data_format: CSV
+
+- file_name: MedMarijLaw.md
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: Medical Marijuana Laws
+  data_type: Policy
+  data_format: CSV
+
+- file_name: PS09_2017_S.csv
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: Medical Marijuana Laws
+  data_type: Policy
+  data_format: CSV
+
+- file_name: PS11_S.csv
+  core_metadata_collections: 
+      - submitter_id: expenditure
+  data_category: State & Local Government Expenditures
+  data_type: Policy
+  data_format: CSV
+
+- file_name: Prison variables_2016.md
+  core_metadata_collections: 
+      - submitter_id: incarceration
+  data_category: Prison Incarceration Rates
+  data_type: Prison Incarceration
+  data_format: MD
+
+- file_name: Jail variables_2017.md
+  core_metadata_collections: 
+      - submitter_id: incarceration
+  data_category: Jail Incarceration Rates
+  data_type: Jail Incarceration
+  data_format: MD
+
+- file_name: PDMP_2017.md
+  core_metadata_collections: 
+      - submitter_id: pdmp
+  data_category: PDMP
+  data_type: Prescription Drug Monitoring Programs (PDMP)
+  data_format: MD
+
+- file_name: GSL_2018.md
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: law
+  data_type: Good Samaritan Laws
+  data_format: MD
+
+- file_name: NAL_2017.md
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: law
+  data_type: Naloxone Access Laws
+  data_format: MD
+
+- file_name: MedExpan_2018.md
+  core_metadata_collections: 
+      - submitter_id: insurance
+  data_category: insurance
+  data_type: Medicaid Expansion
+  data_format: MD
+
+- file_name: MedExp_2019.md
+  core_metadata_collections: 
+      - submitter_id: insurance
+  data_category: insurance
+  data_type: Medicaid Expenditure
+  data_format: MD
+
+- file_name: Syringe.md
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: law
+  data_type: Syringe Services Laws 
+  data_format: MD
+
+- file_name: MedMarijLaw.md
+  core_metadata_collections: 
+      - submitter_id: law
+  data_category: law
+  data_type: Medical Marijuana Laws
+  data_format: MD
+
+- file_name: PublicExpenditures.md
+  core_metadata_collections: 
+      - submitter_id: expenditure
+  data_category: expenditure
+  data_type: State & Local Government Expenditures
+  data_format: MD
+
+- file_name: PublicExpenditures.md
+  core_metadata_collections: 
+      - submitter_id: expenditure
+  data_category: expenditure
+  data_type: State & Local Government Expenditures
+  data_format: MD
+
+- file_name: Health_DrugDeaths.md
+  core_metadata_collections: 
+      - submitter_id: death
+  data_category: Drug-related death rate
+  data_type: Health
+  data_format: MD
+
+- file_name: HePc_rate.md
+  core_metadata_collections: 
+      - submitter_id: infection 
+  data_category: Hepatitis C infection rate
+  data_type: Health
+  data_format: MD
+
+- file_name: HePc_rate.md
+  core_metadata_collections: 
+      - submitter_id: infection 
+  data_category: Hepatitis C infection rate
+  data_type: Health
+  data_format: MD
+
+- file_name: Health_PCPs.md
+  core_metadata_collections: 
+      - submitter_id: physicians 
+  data_category: Physicians
+  data_type: Health
+  data_format: MD
+
+- file_name: Race_Ethnicity_2018.md
+  core_metadata_collections: 
+      - submitter_id: race_ethnicity
+  data_category: Race and Ethnicity 
+  data_type: Demographic
+  data_format: MD
+
+- file_name: Age_2018.md
+  core_metadata_collections: 
+      - submitter_id: age
+  data_category: Age
+  data_type: Demographic
+  data_format: MD
+
+- file_name: Other_Demographic_2018.md
+  core_metadata_collections: 
+      - submitter_id: disability
+  data_category: Population with a Disability
+  data_type: Demographic
+  data_format: MD
+
+- file_name: Other_Demographic_2018.md
+  core_metadata_collections: 
+      - submitter_id: educational_attainment
+  data_category: Educational Attainment
+  data_type: Demographic
+  data_format: MD
+
+- file_name: SDOH_2014.md
+  core_metadata_collections: 
+      - submitter_id: sdoh
+  data_category: Social Determinants of Health (SDOH)
+  data_type: Demographic
+  data_format: MD
+
+- file_name: SVI_2018.md
+  core_metadata_collections: 
+      - submitter_id: svi
+  data_category: Social Vulnerability Index (SVI)
+  data_type: Demographic
+  data_format: MD
+
+- file_name: VetPop.md
+  core_metadata_collections:
+      - submitter_id: veteran
+  data_category: Veteran Population
+  data_type: Demographic
+  data_format: MD
+
+- file_name: Homeless_Population.md
+  core_metadata_collections:
+      - submitter_id: homeless
+  data_category: Homeless Population
+  data_type: Demographic
+  data_format: MD
+
+- file_name: Job_Categories_byindustry_2018.md
+  core_metadata_collections: 
+      - submitter_id: employment
+  data_category: Employment Trends
+  data_type: Economic 
+  data_format: MD
+
+- file_name: Economic_2018.md
+  core_metadata_collections: 
+      - submitter_id: employment
+  data_category: Unemployment Rates 
+  data_type: Economic 
+  data_format: MD
+
+- file_name: Economic_2018.md
+  core_metadata_collections: 
+      - submitter_id: poverty
+  data_category: Poverty Rates 
+  data_type: Economic 
+  data_format: MD
+
+- file_name: Economic_2018.md
+  core_metadata_collections: 
+      - submitter_id: income
+  data_category: Per Capita Income
+  data_type: Economic 
+  data_format: MD
+
+- file_name: ForeclosureRate.md
+  core_metadata_collections: 
+      - submitter_id: foreclosure
+  data_category: Foreclosure Rates
+  data_type: Economic 
+  data_format: MD
+
+- file_name: Housing_2018.md
+  core_metadata_collections: 
+      - submitter_id: housing 
+  data_category: Housing Vacancy Rates
+  data_type: Physical Environment 
+  data_format: MD
+
+- file_name: Housing_2018.md
+  core_metadata_collections: 
+      - submitter_id: housing 
+  data_category: Long Term Occupancy 
+  data_type: Physical Environment 
+  data_format: MD
+
+- file_name: Housing_2018.md
+  core_metadata_collections: 
+      - submitter_id: housing 
+  data_category: Mobile Homes
+  data_type: Physical Environment 
+  data_format: MD
+
+- file_name: Housing_2018.md
+  core_metadata_collections: 
+      - submitter_id: housing 
+  data_category: Rental Rates
+  data_type: Physical Environment
+  data_format: MD
+
+- file_name: Housing_2018.md
+  core_metadata_collections: 
+      - submitter_id: housing 
+  data_category: Housing Unit Density
+  data_type: Physical Environment
+  data_format: MD
+
+- file_name: Rural_Urban_Classification_T_Z.md
+  core_metadata_collections: 
+      - submitter_id: urban_rural 
+  data_category: Urban/Suburban/Rural Classification
+  data_type: Physical Environment
+  data_format: MD
+
+- file_name: Rural_Urban_Classification_County.md
+  core_metadata_collections: 
+      - submitter_id: urban_rural 
+  data_category: Urban/Suburban/Rural Classification
+  data_type: Physical Environment
+  data_format: MD
+
+- file_name: AlcoholOutlets_2018.md
+  core_metadata_collections: 
+      - submitter_id: alcohol_outlet
+  data_category: Alcohol Outlet Density
+  data_type: Physical Environment
+  data_format: MD
+
+- file_name: Overlay.md
+  core_metadata_collections: 
+      - submitter_id: segregation
+  data_category: Hypersegregated Cities
+  data_type: Physical Environment
+  data_format: MD
+
+- file_name: Overlay.md
+  core_metadata_collections: 
+      - submitter_id: black_belt
+  data_category: Southern Black Belt
+  data_type: Physical Environment
+  data_format: MD
+
+- file_name: Overlay.md
+  core_metadata_collections: 
+      - submitter_id: Reservations
+  data_category: Native American Reservations
+  data_type: Physical Environment
+  data_format: MD
+
+- file_name: Job_Categories_byOccupation_2018.md
+  core_metadata_collections: 
+      - submitter_id: essential_workers
+  data_category: Essential Worker Jobs
+  data_type: COVID
+  data_format: MD
+
+- file_name: COVID.md
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Cumulative Case Count
+  data_type: COVID
+  data_format: MD
+
+- file_name: COVID.md
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Adjusted Case Count per 100K
+  data_type: COVID
+  data_format: MD  
+
+- file_name: COVID.md
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: 7-day Average Case Count
+  data_type: COVID
+  data_format: MD
+
+- file_name: COVID.md
+  core_metadata_collections: 
+      - submitter_id: covid_cases
+  data_category: Historical 7-day Average Adjusted Case Count per 100K
+  data_type: COVID
+  data_format: MD 
+

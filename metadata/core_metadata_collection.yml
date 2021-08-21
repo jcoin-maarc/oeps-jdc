@@ -1,38 +1,347 @@
+
 ---
 - submitter_id: incarceration
   title: Prison Incarceration Rates
   data_type: Policy
   description: Prison population rate and prison admission rate by gender and ethnicity
   coverage: United States 2016
-  source: Variables were obtained from the Vera Institute of Justice. Raw data and more details can be found at https://github.com/vera-institute/incarceration_trends.
+  source: Variables were obtained from the Vera Institute of Justice. Raw data and more details can be found at https://urldefense.com/v3/__https://github.com/vera-institute/incarceration_trends__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KUCAXC4i$ .
 
-- submitter_id: mouds
+- submitter_id: incarceration
+  title: Jail Incarceration Rates
+  data_type: Policy
+  description: Jail population rate by gender and ethnicityty
+  coverage: United States 2017
+  source: Variables were obtained from the Vera Institute of Justice. Raw data and more details can be found at https://urldefense.com/v3/__https://github.com/vera-institute/incarceration_trends__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KUCAXC4i$ 
+
+- submitter_id: PDMP
+  title: Prescription Drug Monitoring Programs (PDMP)
+  data_type: Policy
+  description: Any PDMP; Operational PDMP; Must-access PDMP; Electronic PDMP
+  coverage: United States 2021
+  source: Variables were obtained from RAND-USC Schaeffer Opioid Policy Tools and Information Center, 2021, OPTIC-Vetted PDMP Policy Data on Jan 7th, 2021. Raw data is downloaded in the folder of data_raw, named as WEB_OPTIC_PDMP.xlsx.   
+
+- submitter_id: law
+  title: Good Samaritan Laws
+  data_type: Policy
+  description: Any Good Samaritan Law; Good Samaritan Law protecting arrest
+  coverage: United States 2021
+  source: Variables were obtained from RAND-USC Schaeffer Opioid Policy Tools and Information Center, 2021, OPTIC-Vetted Good Samaritan Policy Data. Raw data is downloaded in the data_raw folder, named as WEB_GSL.xlsx.
+
+- submitter_id: law
+  title: Naloxone Access Laws
+  data_type: Policy
+  description: Any Naloxone law; law allowing distribution through a standing or protocal order; law allowing pharmacists prescriptive authority
+  coverage: United States 2021
+  source: Variables were obtained from RAND-USC Schaeffer Opioid Policy Tools and Information Center, OPTIC-Vetted Naloxone Policy Dat, accessed on Jan 7th, 2021. Raw data is downloaded in the folder of data_raw, named as WEB_NAL.xlsx.
+
+- submitter_id: insurance
+  title: Medicaid Expenditure
+  data_type: Policy
+  description: Total Medicaid spending
+  coverage: United States 2019
+  source: Variables were obtained from Kaiser Family Foundation's State Health Facts, accessed January 10, 2021. Raw data is downloaded in the folder of data_raw, named as raw_data_medicaid_exp.csv. The sources are from Urban Institute estimates based on data from CMS (Form 64) from August 2020.
+
+- submitter_id: insurance
+  title: Medicaid Expansion
+  data_type: Policy
+  description: Spending for adults who have enrolled through Medicaid expansion
+  coverage: United States 2018
+  source: Variables were obtained from Kaiser Family Foundation's State Health Facts, accessed January 11, 2021. Raw data is downloaded in the folder of data_raw, named as raw_data_medi_expan.csv. Kaiser Family Foundation uses data in its analysis from the Centers for Medicare and Medicaid Services (CMS) Medicaid Budget and Expenditure System (MBES).
+
+- submitter_id: law
+  title: Syringe Services Laws
+  data_type: Policy
+  description: Laws clarifying legal status for syringe exchange, distribution, and possession programs
+  coverage: United States 2019
+  source: Variables were obtained from Table 1 (August 1, 2019) in Fernández-Viña MH, Prood NE, Herpolsheimer A, Waimberg J, Burris S. State Laws Governing Syringe Services Programs and Participant Syringe Possession, 2014-2019. Public Health Reports. 2020;135:128S-137S. doi:10.1177/0033354920921817
+
+- submitter_id: law
+  title: Medical Marijuana Laws
+  data_type: Policy
+  description: Law authorizing adults to use medical marijuana
+  coverage: United States 2019
+  source: Variable was obtained from Prescription Drug Abuse Policy System, Medical Marijuana Caregiver Rules. This is a longitudinal dataset, displaying medical marijuana caregiver laws in effect as of January 1, 2014 through February 1, 2017.
+
+- submitter_id: expenditure
+  title: State & Local Government Expenditures
+  data_type: Policy
+  description: Government spending on public health, welfare, public safety, and corrections
+  coverage: United States 2018
+  source: This data was sourced from the 2018 U.S. Census Bureau Annual Survey of State and Local Government Finances and accessed via Urban Institute & Tax Policy Center's State and Local Finance Data Finder. This survey is the only source of nationwide, comprehensive local government finance information. It provides statistics on revenue, expenditure, debt, and assets for the 50 states and D.C. The 2018 data was released in September 2020.
+
+-submitter_id: death
+  title: Drug-related death rate
+  data_type: Health
+  description: Death rate from drug-related causes
+  coverage: United States 2009-2019
+  source: Data on drug-related deaths was sourced from the US CDC's Underlying Cause of Death, 2009-2019 dataset, available through CDC WONDER
+
+-submitter_id: infection
+  title: Hepatitis C infection rate
+  data_type: Health
+  description: Hepatitis C infection rates
+  coverage: United States 2014-2018
+  source: Data on drug-related deaths was sourced from the US CDC's Underlying Cause of Death, 2009-2019 dataset, available through CDC WONDER
+
+-submitter_id: physicians
+  title: Physicians
+  data_type: Health
+  description: Number of Primary Care and Specialist Physicians
+  coverage: United States 2020
+  source: Data was sourced from Dartmouth Atlas' Primary Care Service Area (PCSA) Project. The Dartmouth Atlas Project documents variations in how medical resources are distributed and used in the United States. It uses Medicare and Medicaid data to provide information and analysis about national, regional, and local markets, as well as hospitals and their affiliated physicians. The full Dartmouth Atlas data is available here.
+
+-submitter_id: access
   title: Access to MOUDs
   data_type: Health
   description: Distance to nearest MOUD
   coverage: United States 2020
   source: Provider locations prescribing Medications for Opioid Overuse Disorder (MOUDs) were sourced from SAMHSA database for Buprenorphine & Methadone. Provider locations for those prescribing Vivitrol/Naltrexone data was scraped from vivitrol.com.
 
-- submitter_id: pharmacies
+- submitter_id: access
+  title: Access to Health Center
+  data_type: Health
+  description: Distance to nearest hospital
+  coverage: United States 2020
+  source: Hospital locations were sourced from CovidCareMap Healthcare System Capacity data, an aggregated dataset which sources data from the Healthcare Cost Report Information System (HCRIS) and Definitive Healthcare. Zip code tract area (ZCTA) and Census Tract files were sourced from the US Census Bureau, TIGER/Line Shapefiles 2018.
+
+- submitter_id: access
+  title: Access to Mental Health Providers
+  data_type: Health
+  description: Distance to nearest mental health provider
+  coverage: United States 2020
+  source: Mental health provider data was sourced from Substance Abuse and Mental Health Services Administration (SAMSHA) through its Treatment Services Locator Tool. ZIP Code Tract Area (ZCTA) and Census Tract files were sourced from the US Census Bureau, TIGER/Line Shapefiles 2018.
+
+- submitter_id: access
   title: Access to Pharmacies
   data_type: Health
   description: Distance to nearest pharmacy
   coverage: United States 2019
   source: Pharmacy locations were sourced from the InfoGroup (now Data Axle) 2019 Business and Consumer Historical Datafile, available through the University of Chicago Library. Zip code tract area (ZCTA) and Census Tract files were sourced from the US Census Bureau, TIGER/Line Shapefiles 2018.
 
+- submitter_id: access
+  title: Access to Substance Use Treatment Facilities
+  data_type: Health
+  description: Distance to nearest substance use treatment facility
+  coverage: United States 2021
+  source: Variables were obtained from the SAMHSA service locator. substance use treatment facilities are collected in SAMHSA's annual National Survey of Substance Abuse Treatment Services. The lists and locations of these facilities are based off of certification and data collection for treatment facilities by state abuse agencies for the Behavioral Health Services Information System. Also included in this set are treatment facilities that state substance abuse agencies, for a variety of reasons, do not fund, license, or certify which are found through periodic screening of alternative databases. Raw data can be found at https://findtreatment.samhsa.gov/locator and the data collection details can be found at https://www.samhsa.gov/data/data-we-collect/n-ssats-national-survey-substance-abuse-treatment-services.
+
+- submitter_id: access
+  title: Access to Opioid Treatment Programs
+  data_type: Health
+  description: Distance to nearest Opioid treatment program
+  coverage: United States 2021
+  source: Variables were obtained from the SAMHSA service locator. The Opioid Treatment Programs (OTPs) represented in this set are those certified, either fully or provisionally by SAMHSA. Certification is required for MOUD, but these programs can offer other types of treatment, including counseling and other behavioral therapies. Raw data can be found at https://dpt2.samhsa.gov/treatment/directory.aspx and data collection details can be found at https://www.samhsa.gov/medication-assisted-treatment/become-accredited-opioid-treatment-program.
+
 - submitter_id: race_ethnicity
   title: Race and Ethnicity
   data_type: Demographic
   description: Percentages of population defined by categories of race and ethnicity
   coverage: United States 2014-18
-  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), table B02001, B03002, at State, County, Tract and ZIP Code Tabulation Area (ZCTA) level. Raw data and more details can be found at https://data.census.gov.
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), table B02001, B03002, at State, County, Tract and ZIP Code Tabulation Area (ZCTA) level. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: age
+  title: Age
+  data_type: Demographic
+  description: Age group estimates and percentages of population
+  coverage: United States 2014-18
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), table S0101, at State, County, Tract and ZIP Code Tabulation Area level. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: disability
+  title: Population with a Disability
+  data_type: Demographic
+  description: Percentage of population with a disability
+  coverage: United States 2014-18
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), Table B06009, DP02, at State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: educational_attainment 
+  title: Educational Attainment
+  data_type: Demographic
+  description: Population without a high school degree
+  coverage: United States 2014-18
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), Table B06009, DP02, at State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: sdoh
+  title: Social Determinants of Health (SDOH)
+  data_type: Demographic
+  description: SDOH Neighborhood Typologies
+  coverage: United States 2020
+  source: Variables were obtained based on the analysis in the paper, Kolak, Marynia, Bhatt, Jay, Park, Yoon Hong, Padron, Norma, and Molefe, Ayrin. "Quantification of Neighborhood-Level Social Determinants of Health in the Continental United States." JAMA Network Open. 2020;3(1):e1919928. doi:10.1001/jamanetworkopen.2019.19928
+
+- submitter_id: svi
+  title: Social Vulnerability Index (SVI)
+  data_type: Demographic
+  description: SVI Rankings
+  coverage: United States 2018
+  source: Variables were obtained from the US Centers for Disease Control and Prevention (CDC), Agency for Toxic Substances and Disease Registry, Geospatial Research, Analysis, and Services Program. CDC Social Vulnerability Index 2018 Database. Accessed on April 12, 2021. Raw data is downloaded in the folder of data_raw/SVI.
+
+- submitter_id: veteran
+  title: Veteran Population
+  data_type: Demographic
+  description: Population as defined by veteran status
+  coverage: United States 2013-2017
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), table B21001, at State, County, Tract and ZIP Code Tabulation Area (ZCTA) level. Raw data and more details can be found at https://data.census.gov.
+
+- submitter_id: homeless
+  title: Homeless Population
+  data_type: Demographic
+  description: Population as defined by homeless status
+  coverage: United States 2015-2019
+  source: Variables were obtained from the 2015 - 2019 American Community Survey (ACS), table B09019 at State, County, Tract and ZIP Code Tabulation Area (ZCTA) level. Raw data and more details can be found at https://data.census.gov. Additional information was obtained from the Department of Housing and Urban Development Homeless Census, 2019, table DP03 at State, County, Tract and ZIP Code Tabulation Area (ZCTA) level. Raw data and more details can be found at https://www.huduser.gov.
+
+- submitter_id: employment
+  title: Employment Trends
+  data_type: Economic  
+  description: Percentages of population employed in High Risk of Injury Jobs, Educational Services, Health Care, Retail industries
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), table S2403, at State, County, Tract and ZIP Code Tabulation Area level. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: employment
+  title: Unemployment Rate
+  data_type: Economic  
+  description: Unemployment rate
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), table S2403, at State, County, Tract and ZIP Code Tabulation Area level. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: poverty
+  title: Poverty Rate
+  data_type: Economic  
+  description: Percent classified as below poverty level, based on income
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B19301, DP03, and B19301, at the state, county, tract and ZIP Code Tabulation Area (ZCTA) levels. The ACS is an ongoing survey that provides vital information on a yearly basis about our nation and its people. Learn more about the ACS here.
+
+- submitter_id: income
+  title: Per Capita Income
+  data_type: Economic  
+  description: Per capita income in the past 12 months
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B19301, DP03, and B19301, at the state, county, tract and ZIP Code Tabulation Area (ZCTA) levels. The ACS is an ongoing survey that provides vital information on a yearly basis about our nation and its people. Learn more about the ACS here.
+
+- submitter_id: housing
+  title: Housing Occupancy Rate
+  data_type: Built Environment 
+  description: Percent occupied units
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B25002, B25024, B25003, and B25026, each at the State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: housing
+  title: Housing Vacancy Rate
+  data_type: Built Environment 
+  description: Percent vacant units
+  coverage: United States 2014-2018
+  source: VVariables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B25002, B25024, B25003, and B25026, each at the State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: housing
+  title: Long Term Occupancy
+  data_type: Built Environment 
+  description: Percentage of population living in current housing for 20+ years
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B25002, B25024, B25003, and B25026, each at the State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: housing
+  title: Mobile Homes
+  data_type: Built Environment 
+  description: Percent of housing units classified as mobile homes
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B25002, B25024, B25003, and B25026, each at the State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: housing
+  title: Rental Rates
+  data_type: Built Environment 
+  description: Percent of housing units occupied by renters
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B25002, B25024, B25003, and B25026, each at the State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: housing
+  title: Housing Unit Density
+  data_type: Built Environment 
+  description: Housing units per square mile
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B25002, B25024, B25003, and B25026, each at the State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: housing
+  title: Housing Unit Density
+  data_type: Built Environment 
+  description: Housing units per square mile
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B25002, B25024, B25003, and B25026, each at the State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels. Raw data and more details can be found at https://urldefense.com/v3/__https://data.census.gov__;!!OaZRxjSJGsACmqMyc8s!fEuYab4-Ggvaz4HocQaHTlyE77qcNjMhY4maj-YHPa7z3suIg47z_F7MpTX7yWA8KSG3mkNi$ .
+
+- submitter_id: urban_rural
+  title: Urban/Suburban/Rural Classification
+  data_type: Built Environment 
+  description: Classification of areas as rural, urban or suburban using percent rurality (County) or RUCA Codes (Tract, Zip)
+  coverage: United States 2014-2018
+  source: HS02 / Rural-Urban Classifications
+
+- submitter_id: segregation 
+  title: Hypersegregated Cities
+  data_type: Built Environment 
+  description: AUS metropolitan areas where black residents experience hypersegregation
+  coverage: United States 2015
+  source: Variables were obtained from The US Covid Atlas Project. Hypersegregated cities refer to American metropolitan areas where black residents experience hypersegregation. See here for more information. The Black Belt refers to Southern US counties where at least 30% of the population identified Black or African American in the 2000 Census (see here). Native American or American Indian reservation boundaries come from the TIGER/Line 2017 dataset.
+
+- submitter_id: black_belt 
+  title: Southern Black Belt
+  data_type: Built Environment 
+  description:  US counties where 30% of the population identified as Black or African American
+  coverage: United States 2000
+  source: Variables were obtained from The US Covid Atlas Project. Hypersegregated cities refer to American metropolitan areas where black residents experience hypersegregation. See here for more information
+
+- submitter_id: reservations
+  title: Native American Reservations
+  data_type: Built Environment 
+  description:  Percent area of total land in Native American Reservations
+  coverage: United States 2018
+  source: Native American or American Indian reservation boundaries come from the TIGER/Line 2017 dataset.
+
+- submitter_id: alcohol_outlet
+  title: Alcohol Outlet Density
+  data_type: Built Environment 
+  description: Alcohol outlets per square mile, alcohol outlets per capita
+  coverage: United States 2018
+  source: Alcohol outlet locations are from Infogroup's 2018 Business and Consumer Historical Datafile. State, county, census tract, and ZIP Code Tract Area (ZCTA) geometry files are from the U.S. Census TIGER/Line Shapefiles 2018.
+
+- submitter_id: segregation_indices
+  title: Residential Segregation Indices
+  data_type: Built Environment
+  description: Three index measures of segregation; dissimilarity, interaction, isolation
+  coverage: United States 2014-2018
+  source: All data was sourced from the American Community Survey (ACS) 2018 5-year estimates. Population demographic data was sourced at the tract level for all U.S. states and then aggregated up to the county-level for calculations.
+
+- submitter_id: essential_workers
+  title: Essential Worker Jobs
+  data_type: COVID
+  description: Percentage of population employed in Essential Jobs as defined during the COVID-19 pandemic
+  coverage: United States 2014-2018
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), table S2401, at State, County, Tract and ZIP Code Tabulation Area (ZCTA) levels.
 
 - submitter_id: covid_cases
   title: Cumulative Case Count
   data_type: COVID
   description: Daily cumulative raw case count (01/21/20 - 03/03/2021)
   coverage: United States 2020-21
-  source: Variables were obtained from The New York Times. The Times has made data available aggregated from dozens of journalists working to collect and monitor data. Their jouralists communicate with public officials to clarify and categorize cases. Population data used to compute population-adjusted rates were obtained from the 2018 American Comnmunity Survey.
+  source: Variables were obtained from the 2014 - 2018 American Community Survey (ACS), tables B19301, DP03, and B19301, at the state, county, tract and ZIP Code Tabulation Area (ZCTA) levels. The ACS is an ongoing survey that provides vital information on a yearly basis about our nation and its people. Learn more about the ACS here.
+
+- submitter_id: covid_cases
+  title: Adjusted Case Count per 100K
+  data_type: COVID
+  description: Daily cumulative adjusted case count per 100K population (01/21/20 - 03/03/2021)
+  coverage: United States 2021
+  source: Variables were obtained from The New York Times. The Times has made data available aggregated from dozens of journalists working to collect and monitor data. Their jouralists communicate with public officials to clarify and categorize cases.
+
+- submitter_id: covid_cases
+  title: 7-day Average Case Count
+  data_type: COVID
+  description: 7-day average case count (01/21/20 - 03/03/2021)
+  coverage: United States 2021
+  source: Variables were obtained from The New York Times. The Times has made data available aggregated from dozens of journalists working to collect and monitor data. Their jouralists communicate with public officials to clarify and categorize cases.
+
+- submitter_id: covid_cases
+  title: Historical 7-day Average Adjusted Case Count per 100K
+  data_type: COVID
+  description: 7-day average adjusted case count per 100K population (01/21/20 - 03/03/2021)
+  coverage: United States 2021
+  source: Variables were obtained from The New York Times. The Times has made data available aggregated from dozens of journalists working to collect and monitor data. Their jouralists communicate with public officials to clarify and categorize cases.
 
 - submitter_id: geo_boundaries
   title: Geographic Boundaries
@@ -40,3 +349,10 @@
   description: Geographic boundary files
   coverage: United States 2018
   source: Geographic boundary data are sourced from the U.S. Census 2018 TIGER/Line Shapefiles.
+
+- submitter_id: crosswalk_files
+  title: Crosswalk Files
+  data_type: Geographic Boundaries
+  description: Crosswalk Files
+  coverage: United States 2020
+  source: HUD’s Office of Policy Development and Research (PD&R).
