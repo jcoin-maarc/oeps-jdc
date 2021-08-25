@@ -1066,6 +1066,7 @@
 - file_name: Health_DrugDeaths.md
   core_metadata_collections:
       - submitter_id: death
+  data_category: Drug-related death rate
   data_type: Health
   data_format: MD
 
@@ -1566,3 +1567,4 @@
   data_type: COVID
   data_format: MD 
 
+---
