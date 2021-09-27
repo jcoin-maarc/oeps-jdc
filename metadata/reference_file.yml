@@ -11,112 +11,112 @@
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: County Boundaries
-  data_format: DBF
+  data_format: Shapefile
 
 - file_name: counties2018.prj
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: County Boundaries
-  data_format: PRJ
+  data_format: Shapefile
 
 - file_name: counties2018.shp
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: County Boundaries
-  data_format: SHP 
+  data_format: Shapefile 
 
 - file_name: counties2018.shx
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: County Boundaries
-  data_format: SHX
+  data_format: Shapefile
 
 - file_name: states2018.dbf
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: State Boundaries
-  data_format: DBF
+  data_format: Shapefile
 
 - file_name: states2018.prj
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: State Boundaries
-  data_format: PRJ
+  data_format: Shapefile
 
 - file_name: states2018.shp
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: State Boundaries
-  data_format: SHP
+  data_format: Shapefile
 
 - file_name: states2018.shx
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: State Boundaries
-  data_format: SHX
+  data_format: Shapefile
 
 - file_name: tracts2018.dbf
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: Tracts Boundaries
-  data_format: DBF
+  data_format: Shapefile
 
 - file_name: tracts2018.prj
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: Tracts Boundaries
-  data_format: PRJ
+  data_format: Shapefile
 
 - file_name: tracts2018.shp
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: Tracts Boundaries
-  data_format: SHP
+  data_format: Shapefile
 
 - file_name: tracts2018.shx
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: Tracts Boundaries
-  data_format: SHX
+  data_format: Shapefile
 
 - file_name: zctas2018.dbf
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: Zip Boundaries
-  data_format: DBF
+  data_format: Shapefile
 
 - file_name: zctas2018.prj
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: Zip Boundaries
-  data_format: PRJ
+  data_format: Shapefile
 
 - file_name: zctas2018.shp
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: Zip Boundaries
-  data_format: SHP
+  data_format: Shapefile
 
 - file_name: zctas2018.shx
   core_metadata_collections: 
       - submitter_id: geo_boundaries
   data_category: Geographic Boundaries
   data_type: Zip Boundaries
-  data_format: SHX
+  data_format: Shapefile
 
 - file_name: crosswalk.md
   core_metadata_collections: 
