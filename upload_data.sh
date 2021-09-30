@@ -36,7 +36,7 @@ for arg in "$@"; do
             is_metadata=true
             shift # Remove argument (-t) name from `$@`
             ;;
-        -r | --update-data)
+        -r | --upload-data)
             is_data=true
             shift # Remove argument (-t) name from `$@`
             ;;
