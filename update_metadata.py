@@ -7,12 +7,52 @@ import yaml
 import json
 import pandas as pd
 import numpy as np
+import argparse
 
-ENDPOINT = 'https://jcoin.datacommons.io'
-PROGRAM = 'JCOIN'
-PROJECT = 'OEPS'
 
-auth = Gen3Auth(refresh_file='credentials.json')
+parser = argparse.ArgumentParser(
+    description='Arguments to run the update functions'
+)
+parser.add_argument(
+    '--endpoint', 
+    metavar='endpoint', 
+    type=str, 
+    nargs=1,
+    default='https://jcoin.datacommons.io',
+    help='Specify the endpoint (ie the url of the data commons)'
+)
+
+parser.add_argument(
+    '--program', 
+    metavar='program', 
+    type=str, 
+    nargs=1,
+    default='JCOIN',
+    help='The program of the data commons'
+)
+
+parser.add_argument(
+    '--project', 
+    metavar='project', 
+    type=str, 
+    nargs=1,
+    default='OEPS',
+    help='The project of the data commons'
+)
+parser.add_argument(
+    '--credentials', 
+    metavar='credentials', 
+    type=str, 
+    nargs=1,
+    default='credentials.json',
+    help='The project of the data commons'
+)
+
+ENDPOINT = parser.parse_args().endpoint
+PROGRAM = parser.parse_args().program
+PROJECT = parser.parse_args().project
+
+auth = Gen3Auth(refresh_file=parser.parse_args().credentials)
 index = Gen3Index(ENDPOINT, auth)
 sub = Gen3Submission(ENDPOINT, auth)
 
