@@ -4,9 +4,13 @@ level metadata for the OEPS data repo
 '''
 
 #conda create -n oeps-wrangler
+#TODO: Add a regex flag to all replace functions
+#FutureWarning: The default value of regex will change from True to False in a future version.
 import pandas as pd
+import openpyxl
 import os
 import re
+from io import StringIO
 #path to opioid policy scan repo
 
 #for each file:
@@ -117,18 +121,21 @@ file_df = pd.DataFrame(
     {
         'file_path':file_paths,
         'file_name':file_names,
-        'column_names':column_names,
-        'spatial_types':spatial_types,
-        'data_types':data_types
+        'file_column_names':column_names,
+        'file_spatial_types':spatial_types,
+        'file_data_types':data_types
     }
 )
+
+is_geo = file_df.file_data_types=='geographic'
+is_crosswalk = file_df.file_data_types=='crosswalk'
 
 file_df['metadata'] = file_df.file_name\
     .str.replace("_.*\..*","")\
     .str.replace("COVID\d\d","COVID")
-is_geo = file_df.data_types.isin(['crosswalk','geographic'])
-file_df.metadata.\
-    where(is_geo,file_df.metadata,inplace=True)
+
+file_df.loc[is_geo,'metadata'] = 'geographic'
+file_df.loc[is_crosswalk,'metadata'] = 'crosswalk'
 
 #list files in each md
 #make pd.DataFrame for variables with column for category
@@ -199,4 +206,49 @@ vars_df = pd.concat(
     ]
 )
 
-#COVID split into multiple entries
+# join files to metadata
+
+# COVID split into multiple entries
+test_csv_dfs = file_df.set_index('metadata')[['file_name','file_spatial_types','file_data_types']].\
+    join(meta_df.set_index('metadata').loc[:,'metadata_name':]).\
+    query("file_data_types=='csv'")
+
+# join on metadata 
+
+# join on metadata for data files
+data_files_with_metadata_df = file_df.set_index('metadata').\
+    join(meta_df.set_index('metadata')).\
+    pipe(lambda df: df.loc[~df.file_spatial_types.isna()]) #all data files have some sort of spatial type
+
+# join on file name for markdown files
+md_files_with_metadata_df = file_df.set_index('metadata').\
+    join(meta_df.set_index('metadata')).\
+    pipe(lambda df: df.loc[df.file_spatial_types.isna()]) #markdown files dont have spatial type
+files_with_metadata_df = pd.concat([data_files_with_metadata_df,md_files_with_metadata_df])
+
+variable_construct_path = 'c:/Users/kranz-michael/projects/phs-rcg/oeps-jdc/variable_constructs.xlsx'
+variable_constructs = pd.read_excel(variable_construct_path)
+variable_constructs['metadata'] = (
+    variable_constructs['Metadata']
+    .str.replace("/ .*| /.*|/.*","",re.DOTALL)
+    #.pipe(lambda s: s.where(s.str.extract('(COVID)')[0].isna(),'COVID'))
+    .pipe(lambda s: s.where(s!='Geographic Boundaries','geographic'))
+    .pipe(lambda s: s.where(s!='Crosswalk Files','crosswalk'))
+    .str.replace(" ","") #typos
+)
+variable_constructs['dummy'] = 1
+
+file_df['metadata_variable_constructs']  = (
+    file_df.file_name
+    .str.replace("_.*\..*","")
+)
+
+is_geo = file_df.file_data_types=='geographic'
+is_crosswalk = file_df.file_data_types=='crosswalk'
+file_df.loc[is_geo,'metadata_variable_constructs'] = 'geographic'
+file_df.loc[is_crosswalk,'metadata_variable_constructs'] = 'crosswalk'
+
+test_df = file_df.set_index('metadata_variable_constructs').join(variable_constructs.set_index('metadata')[['dummy']])
+
+
+# 
