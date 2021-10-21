@@ -11,19 +11,13 @@ import openpyxl
 import os
 import re
 from io import StringIO
-#path to opioid policy scan repo
+import hashlib
 
-#for each file:
-#get md5sum
-#get list of variables
+from gen3.auth import Gen3Auth
+from gen3.submission import Gen3Submission
+from gen3.index import Gen3Index
+import numpy as np
 
-oeps_dir = 'c:/Users/kranz-michael/projects/opioid-policy-scan/data_final'
-md_props = []
-#md info list
-md_test = "c:/Users/kranz-michael/projects/opioid-policy-scan/README.md"
-
-
-md_files = []
 def get_markdown_sections(md_path,md_name):
     with open(md_path,'r',encoding='utf-8') as f:
         text = ' '.join(f.readlines())
@@ -45,23 +39,13 @@ def get_left_str(series,extract_pat,repl_pat=".*:|\n",strip_pat=' '):
 def get_md5sum(file_path):
     with open(file_path, "rb") as f:
         md5_hash = hashlib.md5()
-        content = file.read()
+        content = f.read()
         md5_hash.update(content)
     return md5_hash.hexdigest()
 
 def get_filesize(file_path):
     return os.path.getsize(file_path)
 
-#get_markdown_sections(md_test,'variable_constructs')
-
-#moud
-#metadata
-#geometryFiles
-file_paths = []
-file_names = []
-spatial_types = []
-data_types = []
-column_names = []
 def get_files(dir):
     for f in os.scandir(dir):
         if f.is_file():
@@ -124,13 +108,47 @@ def get_files(dir):
             data_types.append(data_type)
             spatial_types.append(spatial)
             column_names.append(cols)
+            #file properties
+            md5sums.append(get_md5sum(f.path))
+            file_sizes.append(get_filesize(f.path))
         if f.is_dir():
+            #run through function if not a directory that has its own files
             get_files(f.path)
 
-get_files(oeps_dir)
 
-#%%
-# pd.DataFrame(md_props).replace({'\n':' '},regex=True)
+def get_gen3_files(index):
+    """Get file objects uploaded to Commons"""
+    # Note: limit=none (default) doesn't seem to work
+    # TODO: accomodate for more than 1024 files (returns in pages -- augment call with pages)
+    #asyncio package --- concurrent programming -- eg engineX uses
+    df = pd.DataFrame(index.get_all_records(limit=1024))
+    #add_submitter_id(df)
+    df['updated_date'] = pd.to_datetime(df.updated_date)
+    df['md5sum'] = df.hashes.map(lambda x: x.get('md5'))
+    df['file_size'] = df['size'].fillna(0).astype(np.int64)
+    df.rename(columns={'did':'object_id'}, inplace=True)
+    df = df.sort_values('updated_date').groupby(['file_name','md5sum']).tail(1)
+    df = df[['object_id','file_name','file_size','md5sum']]
+    return df
+
+#path to opioid policy scan repo
+oeps_dir = 'c:/Users/kranz-michael/projects/opioid-policy-scan/data_final'
+md_props = []
+#md info list
+md_test = "c:/Users/kranz-michael/projects/opioid-policy-scan/README.md"
+
+
+md_files = []
+file_paths = []
+file_names = []
+spatial_types = []
+data_types = []
+column_names = []
+file_sizes = []
+md5sums = []
+
+
+get_files(oeps_dir)
 file_df = pd.DataFrame(
     {
         'file_path':file_paths,
@@ -152,6 +170,56 @@ file_df['metadata'] = file_df.file_name\
 
 file_df.loc[is_geo,'metadata'] = 'geographic'
 file_df.loc[is_crosswalk,'metadata'] = 'crosswalk'
+
+
+## check if current file is in gen3 and upload files that are not 
+
+ENDPOINT = 'https://jcoin.datacommons.io/'
+PROGRAM = 'JCOIN'
+PROJECT = 'OEPS'
+
+auth = Gen3Auth(refresh_file='credentials.json')
+index = Gen3Index(ENDPOINT, auth)
+sub = Gen3Submission(ENDPOINT, auth)
+
+
+#read in files in directory
+local_files_df = file_df.rename(columns={'file_md5sums':'md5sum',
+    'file_sizes':'file_size',
+    'file_name':'file_name'})
+gen3_files_df = get_gen3_files(index)
+
+files_df = local_files_df\
+    .merge(gen3_files_df,on=['file_name','md5sum','file_size'],how='left',validate='one_to_one')\
+    .rename(columns={"object_id":"gen3_object_id"})
+
+files_df.to_csv('files_df.csv')
+#upload data
+#path to gen3 client
+gen3_client_exe_path = os.path.realpath('c:/Users/kranz-michael/Documents/gen3-client.exe')
+#paths to files transformed with operating system syntax
+files_to_be_uploaded = files_df\
+    .loc[files_df.gen3_object_id.isna()]\
+    .file_path\
+    .apply(os.path.realpath)
+credentials_path = 'credentials.json'
+
+#configure gen3 client for local submissions
+creds = os.popen(f'{gen3_client_exe_path} configure --profile=jdc --cred={credentials_path} --apiendpoint={ENDPOINT}')
+print(creds.read())
+
+#upload data not in gen3
+upload_output_list = []
+for f in files_to_be_uploaded:    
+    output = os.popen(f"{gen3_client_exe_path} upload --profile=jdc --upload-path={f}")
+    output_text = output.read()
+    print(output_text)
+    upload_output_list.append(output_text)
+
+#upload metadata
+
+# the following commented out code extracts info from individual metadata files. 
+# kept for future use but may need to change get_markdown fxn header split reg exs
 
 #list files in each md
 #make pd.DataFrame for variables with column for category
@@ -242,7 +310,9 @@ file_df.loc[is_crosswalk,'metadata'] = 'crosswalk'
 #     pipe(lambda df: df.loc[df.file_spatial_types.isna()]) #markdown files dont have spatial type
 # files_with_metadata_df = pd.concat([data_files_with_metadata_df,md_files_with_metadata_df])
 
-## get variable construct table from README.md file
+
+
+# get variable construct table from README.md file (this seems to be most up to date as opposed to data doc)
 tbl = []
 variable_constructs = []
 with open(md_test,'r',encoding='utf-8') as f:
@@ -255,6 +325,7 @@ with open(md_test,'r',encoding='utf-8') as f:
             and not re.search(":-----",line):
             row = line.split("|")
             tbl.append(row)
+            #for each table line, get the variable construct
             variable_constructs.append(variable_construct)
 
 metadata_df = pd.DataFrame(tbl).loc[:,1:5]
@@ -270,26 +341,34 @@ metadata_df['Variable Constructs'] = variable_constructs
 #  get file prefixes to join with file dataframe
 metadata_df['metadata_for_data'] = (
     metadata_df['Metadata']
-    .str.replace("/ .*| /.*|/.*|\[|\]|\(.*","",re.DOTALL)
-    .str.strip(" ")
-    #.pipe(lambda s: s.where(s.str.extract('(COVID)')[0].isna(),'COVID'))
-    .pipe(lambda s: s.where(s!='Geographic Boundaries','geographic'))
-    .pipe(lambda s: s.where(s!='Crosswalk Files','crosswalk'))
-    #.str.replace(" ","") #typos
+    .str.replace("/ .*| /.*|/.*|\[|\]|\(.*| ","",re.DOTALL)
+    .str.replace("GeographicBoundaries","geographic") #geographic
+    .str.replace("CrosswalkFiles","crosswalk") #crosswalk
 )
 metadata_df['metadata_file_name'] = metadata_df['Metadata'].str.replace(".*/metadata/|\)| ","")
-metadata_df['id'] = metadata_df['Variable Construct'].str.strip(" ").str.lower().str.replace(" |\(|\)","_")
+metadata_df['id'] = metadata_df['Variable Construct']\
+    .str.strip(" ")\
+    .str.lower()\
+    .str.replace(" |\(|\)|\&|\/","_")\
++ metadata_df.index.astype(str) #some variable constructs have same name
+
+
+## format and update metadata 
+import pandas as pd
+files_df = pd.read_csv("files_df.csv")
 
 # get file metadata names from file names
-data_file_df = file_df.query("file_data_types!='md'")
-data_file_df['metadata_variable_constructs']  = ( #warning for value on slice...
+data_file_df = files_df.query("file_data_types!='md'")
+data_file_df['metadata_variable_constructs']  = ( 
     data_file_df.file_name
     .str.replace("_.*\..*","")
 )
+
+#geographic and crosswalk are gleaned from data types and not file names
 is_geo = data_file_df.file_data_types=='geographic'
 is_crosswalk = data_file_df.file_data_types=='crosswalk'
-data_file_df['metadata_variable_constructs'].where(~is_geo,'geographic',inplace=True)
-data_file_df['metadata_variable_constructs'].where(~is_crosswalk,'crosswalk',inplace=True)
+data_file_df.loc[is_geo,'metadata_variable_constructs'] = 'geographic'
+data_file_df.loc[is_crosswalk,'metadata_variable_constructs'] = 'crosswalk'
 
 
 #make tsv files for submission
@@ -305,88 +384,54 @@ core_metadata_collection_fields = {
      'Metadata':'relation',
     'Variable Constructs':'subject'
 }
-core_metadata_collection = metadata_df[core_metadata_collection_fields]
 
 reference_fields = {
     'submitter_id':'submitter_id',
-    '':'',
-    'file_md5sums':'md5sum',
-    'file_sizes':'file_size',
+    'data_category':'data_category',
+    'md5sum':'md5sum',
+    'file_size':'file_size',
     'file_name':'file_name',
     'id':'core_metadata_collections.submitter_id',
-    'file_spatial_types':'data_category',
-    'file_data_types':'data_type'
+    'file_spatial_types':'data_format',
+    'file_data_types':'data_type',
+    'gen3_object_id':'object_id'
 }
 
-reference_data_df = data_file_df.set_index('metadata_variable_constructs').\
-    join(metadata_df.set_index('metadata_for_data'))\
-    [reference_fields]
+core_metadata_collection = metadata_df\
+    [core_metadata_collection_fields]\
+    .assign(type='core_metadata_collection')\
+    .rename(columns=core_metadata_collection_fields)
+
+reference_data_df = data_file_df.set_index('metadata_variable_constructs')\
+    .join(metadata_df.set_index('metadata_for_data'))\
+    .assign(
+        submitter_id = lambda x: x.id + "_" +\
+            x.file_name\
+            .str.lower().str.replace("\.","_"),
+        data_category = 'data',
+        type='reference_file'
+    )\
+    [reference_fields.keys()]\
+    .rename(columns=reference_fields)
 
 reference_md_df = metadata_df\
+    .set_index('metadata_file_name')\
+    .join(files_df.set_index('file_name'))\
     .assign(
-        file_name = lambda x: x.metadata_file_name,
+        file_name = lambda x: x.index,
         file_data_types = 'markdown',
-        file_spatial_types=None,
-        file_column_names=None
+        file_spatial_types='documentation',
+        data_category='documentation'
     )\
-    [reference_fields]
+    .assign(
+        submitter_id = lambda x: x.id + "_"
+            + x.file_name.str.lower().str.replace("\.","_"),
+        type='reference_file'
+    )\
+    [reference_fields.keys()]\
+    .rename(columns=reference_fields)
 
 
-reference_data_df.to_csv("reference_data_df.csv")
-reference_md_df.to_csv("reference_md_df.csv")
-core_metadata_collection.to_csv("core_metadata_collection.csv")
-
-
-# for core metadata collections:
-
-
-# required for reference files
-# md5sum : The 128-bit hash value expressed as a 32 digit hexadecimal number used as a file's digital fingerprint.
-#   - type
-#   - submitter_id
-#   - file_name
-#   - file_size
-#   - md5sum
-#   - data_category
-#   - data_type
-#   - data_format
-
-
-
-
-# Python rogram to find the SHA-1 message digest of a file
-
-# importing the hashlib module
-import hashlib
-
-def hash_file(filename):
-   """"This function returns the SHA-1 hash
-   of the file passed into it
-   
-   taken from:
-   https://www.programiz.com/python-programming/examples/hash-file
-   """
-
-   # make a hash object
-   h = hashlib.md5()
-
-   # open file for reading in binary mode
-   with open(filename,'rb') as file:
-
-       # loop till the end of the file
-       chunk = 0
-       while chunk != b'':
-           # read only 1024 bytes at a time
-           chunk = file.read(1024)
-           h.update(chunk)
-
-   # return the hex representation of digest
-   return h.hexdigest()
-
-
-message = hash_file("Health03_T.csv")
-print(message)
-
-
-
-
+reference_data_df.to_csv("reference_data_df.tsv",sep='\t',index=False)
+reference_md_df.to_csv("reference_md_df.tsv",sep='\t',index=False)
+core_metadata_collection.to_csv("core_metadata_collection.tsv",sep='\t',index=False)
