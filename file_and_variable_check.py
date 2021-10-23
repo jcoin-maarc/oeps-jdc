@@ -18,6 +18,9 @@ from gen3.submission import Gen3Submission
 from gen3.index import Gen3Index
 import numpy as np
 
+import shutil
+from pathlib import Path
+
 def get_markdown_sections(md_path,md_name):
     with open(md_path,'r',encoding='utf-8') as f:
         text = ' '.join(f.readlines())
@@ -46,75 +49,41 @@ def get_md5sum(file_path):
 def get_filesize(file_path):
     return os.path.getsize(file_path)
 
-def get_files(dir):
-    for f in os.scandir(dir):
-        if f.is_file():
-            #data (ie one of the construct data files at top level dir)
-            #TODO: change order from lowest to highest level
-            if dir.endswith('data_final'):
-                if f.name.endswith('csv'):
-                    data_type = 'csv'
-                    
-                    if '_S' in f.name:
-                        spatial = 'state'
-                    elif '_Z' in f.name:
-                        spatial = 'zcta'
-                    elif '_T' in f.name:
-                        spatial = 'tract'
-                    elif '_C' in f.name:
-                        spatial = 'county'
-                    else:
-                        print("Unknown spatial scale:")
-                        print(f.name)
-                        spatial = ''
-                else:
-                    data_type = None
-                    spatial = None
-            #locations (right now just mouds
-            elif dir.endswith('moud'):
-                spatial = 'locations'
-                if f.name.endswith('csv'):
-                    data_type = 'csv'
-                elif f.name.endswith('gpkg'):
-                    data_type = 'gpkg'
-            #crosswalks
-            elif dir.endswith('crosswalk'):
-                data_type = 'crosswalk'
-                spatial = f.name.lower().replace('xlsx','')
-            #shapefiles
-            elif re.search("dbf$|prj$|shp$|shx$",f.name):
-                data_type = 'geographic'
-                spatial = re.search("county|state|tract|zcta",dir).group(0)
-            #metadata
-            elif dir.endswith('metadata') and f.name.endswith(".md"):
-                data_type = 'md'
-                spatial = None
-                #fxn to scrape md file
-                md_props.append(get_markdown_sections(f.path,f.name))
-            else:
-                print(f"{f.name} is an unrecgonized file type")
-                data_type = None
-                spatial = None
+def get_local_files(dir):
+    ''' 
+    collects file properties in a local directory and its subdirectories
+    in a dataframe.
 
-            #get column names
-            if f.name.endswith('csv'):
-                cols = pd.read_csv(f.path).columns.values
-            else:
-                cols = None
+    created to check local files (collected here) against files
+    uploaded to a gen3 commons
+    
+    ''' 
+    #instantiate empty df to append file info
+    file_props = {
+        'file_path':[],
+        'file_name':[],
+        'md5sum':[],
+        'file_size':[]
+    }
 
-            #append overall lists
-            file_paths.append(f.path)
-            file_names.append(f.name)
-            data_types.append(data_type)
-            spatial_types.append(spatial)
-            column_names.append(cols)
-            #file properties
-            md5sums.append(get_md5sum(f.path))
-            file_sizes.append(get_filesize(f.path))
-        if f.is_dir():
-            #run through function if not a directory that has its own files
-            get_files(f.path)
-
+    def _scan_dir(dir):
+        '''
+        recursively scan directory and collects all 
+        files in directory and sub-directories
+        '''
+        for f in os.scandir(dir):
+            if f.is_file():
+                #append overall lists
+                file_props['file_path'].append(f.path)
+                file_props['file_name'].append(f.name)
+                file_props['md5sum'].append(get_md5sum(f.path))
+                file_props['file_size'].append(get_filesize(f.path))
+            if f.is_dir():
+                #run through function if not a directory that has its own files
+                _scan_dir(f.path)
+    #run scan function          
+    _scan_dir(dir)
+    return pd.DataFrame(file_props)
 
 def get_gen3_files(index):
     """Get file objects uploaded to Commons"""
@@ -132,91 +101,145 @@ def get_gen3_files(index):
     return df
 
 #path to opioid policy scan repo
-oeps_dir = 'c:/Users/kranz-michael/projects/opioid-policy-scan/data_final'
+data_dir = 'c:/Users/kranz-michael/projects/opioid-policy-scan/data_final'
+ENDPOINT = 'https://jcoin.datacommons.io/'
+PROGRAM = 'JCOIN'
+PROJECT = 'OEPS'
+credentials_path = 'credentials.json'
+gen3_client_exe_path = 'c:/Users/kranz-michael/Documents/gen3-client.exe'
+gen3_history_path = r'C:\Users\kranz-michael\.gen3'
+
+class Files:
+    def __init__(self,local_dir,credentials_path,endpoint):
+
+        self.local_dir = Path(local_dir)
+        self.credentials_path = Path(credentials_path)
+        self.endpoint = endpoint
+
+    def merge_local_and_gen3_file_info(self):
+        ''' 
+        reads in all files of a local directory that contains files to be uploaded.
+        Then gets all the complete file manifest from a gen3 commons.
+
+        If the local file matches the gen3 file (based on file name, file size, and md5 check sum),
+        gets the gen3 object id. 
+
+        This can be used for two use cases:
+        1. File uploads: to check for new files that havent been uploaded (ie that dont have an object id) -- 
+            useful as currently only looks for file name in local submission history.
+        2. Metadata submissions: to provide the file information necessary for metadata submission
+        ''' 
+        auth = Gen3Auth(refresh_file=self.credentials_path.as_posix())
+        index = Gen3Index(self.endpoint, auth)
+        #read in files in directory
+        local_files_df = get_local_files(self.local_dir.as_posix())
+        #get gen3 files
+        gen3_files_df = get_gen3_files(index)
+
+        files_df = (
+            local_files_df
+            .merge(gen3_files_df,
+                on=['file_name','md5sum','file_size'],
+                how='left',
+                validate='one_to_one')
+            .rename(columns={"object_id":"gen3_object_id"})
+        )
+        return files_df
+
+    def upload_new_files(self,gen3_client_exe_path,gen3_history_path):
+        ''' 
+        takes in the path to a gen3-client executable and the path to 
+        gen3 history (ie .gen3). 
+        Deletes the local gen3 history and uploads new files
+        based on the md5sum and file name
+        '''
+
+        self.gen3_client_exe_path = Path(gen3_client_exe_path)
+        self.gen3_history_path = Path(gen3_history_path)
+        files_df = self.merge_local_and_gen3_file_info()
+        ## check if current file is in gen3 and upload files that are not 
+        files_to_be_uploaded = (
+            files_df
+            .loc[files_df.gen3_object_id.isna()]
+            .file_path
+            .apply(os.path.realpath)
+        )
+        print(f'''
+
+        Number of files to be uploaded: {files_to_be_uploaded.shape[0]}
+        Number of total files: {files_df.shape[0]}
+
+        ''')
+        #as we are checking successful upload history directly through gen3, the local submission history is not needed
+        # TODO: make option to not remove path
+        if self.gen3_history_path.is_dir():
+            shutil.rmtree(self.gen3_history_path)
+        #configure gen3 client for local submissions
+        creds = os.popen(f'{self.gen3_client_exe_path} configure --profile=jdc --cred={self.credentials_path} --apiendpoint={self.endpoint}')
+        print(creds.read())
+        #upload local data files not in gen3
+        upload_output_list = []
+        for f in files_to_be_uploaded:    
+            output = os.popen(f"{self.gen3_client_exe_path} upload --profile=jdc --upload-path={f}")
+            output_text = output.read()
+            print(output_text)
+            upload_output_list.append(output_text)
+        return upload_output_list
+
+
+files = Files(
+    local_dir=data_dir,
+    credentials_path=credentials_path,
+    endpoint=ENDPOINT
+)
+#upload new files
+file_upload_output = files.upload_new_files(
+    gen3_client_exe_path=gen3_client_exe_path,
+    gen3_history_path=gen3_history_path
+)
+#get local files with object ids (should all have object ids if uploads were successful)
+files_df = files.merge_local_and_gen3_file_info()
+
+
+contains = files_df.file_name.str.contains
+#spatial types
+is_state = contains("_S|state")
+is_county = contains("_C|county")
+is_zip = contains("_Z|zcta")
+is_tract = contains("_T|tract")
+is_location = contains("us-wide-moudsCleaned")
+spatial_cond_list = [is_state,is_county,is_zip,is_tract,is_location]
+spatial_choice_list = ['State','County','Zip','Tract','Location']
+files_df['file_spatial_type'] = np.select(spatial_cond_list,spatial_choice_list,None)
+#data types
+is_gpkg = contains("\.gpkg$")
+is_csv = contains("\.csv$")
+is_md = contains("\.md$")
+is_geographic = contains("dbf$|prj$|shp$|shx$")
+is_crosswalk = contains('COUNTY_ZIP|TRACT_ZIP|ZIP_COUNTY|ZIP_TRACT')
+data_type_cond_list = [is_gpkg,is_csv,is_md,is_geographic,is_crosswalk]
+data_type_choice_list = ['gpkg','csv','md','geographic','crosswalk']
+files_df['file_data_type'] = np.select(data_type_cond_list,data_type_choice_list,None)
+
+#metadata category name
+is_geo = file_df.file_data_types=='geographic'
+is_crosswalk = file_df.file_data_types=='crosswalk'
+
+#TODO: variable names and descriptions
+#upload metadata
+
 md_props = []
 #md info list
 md_test = "c:/Users/kranz-michael/projects/opioid-policy-scan/README.md"
 
 
-md_files = []
-file_paths = []
-file_names = []
-spatial_types = []
-data_types = []
-column_names = []
-file_sizes = []
-md5sums = []
 
 
-get_files(oeps_dir)
-file_df = pd.DataFrame(
-    {
-        'file_path':file_paths,
-        'file_name':file_names,
-        'file_column_names':column_names,
-        'file_spatial_types':spatial_types,
-        'file_data_types':data_types,
-        'file_md5sums': md5sums,
-        'file_sizes':file_sizes
-    }
-)
-
-is_geo = file_df.file_data_types=='geographic'
-is_crosswalk = file_df.file_data_types=='crosswalk'
 
 file_df['metadata'] = file_df.file_name\
     .str.replace("_.*\..*","")\
     .str.replace("COVID\d\d","COVID")
 
-file_df.loc[is_geo,'metadata'] = 'geographic'
-file_df.loc[is_crosswalk,'metadata'] = 'crosswalk'
-
-
-## check if current file is in gen3 and upload files that are not 
-
-ENDPOINT = 'https://jcoin.datacommons.io/'
-PROGRAM = 'JCOIN'
-PROJECT = 'OEPS'
-
-auth = Gen3Auth(refresh_file='credentials.json')
-index = Gen3Index(ENDPOINT, auth)
-sub = Gen3Submission(ENDPOINT, auth)
-
-
-#read in files in directory
-local_files_df = file_df.rename(columns={'file_md5sums':'md5sum',
-    'file_sizes':'file_size',
-    'file_name':'file_name'})
-gen3_files_df = get_gen3_files(index)
-
-files_df = local_files_df\
-    .merge(gen3_files_df,on=['file_name','md5sum','file_size'],how='left',validate='one_to_one')\
-    .rename(columns={"object_id":"gen3_object_id"})
-
-files_df.to_csv('files_df.csv')
-#upload data
-#path to gen3 client
-gen3_client_exe_path = os.path.realpath('c:/Users/kranz-michael/Documents/gen3-client.exe')
-#paths to files transformed with operating system syntax
-files_to_be_uploaded = files_df\
-    .loc[files_df.gen3_object_id.isna()]\
-    .file_path\
-    .apply(os.path.realpath)
-credentials_path = 'credentials.json'
-
-#configure gen3 client for local submissions
-creds = os.popen(f'{gen3_client_exe_path} configure --profile=jdc --cred={credentials_path} --apiendpoint={ENDPOINT}')
-print(creds.read())
-
-#upload data not in gen3
-upload_output_list = []
-for f in files_to_be_uploaded:    
-    output = os.popen(f"{gen3_client_exe_path} upload --profile=jdc --upload-path={f}")
-    output_text = output.read()
-    print(output_text)
-    upload_output_list.append(output_text)
-
-#upload metadata
 
 # the following commented out code extracts info from individual metadata files. 
 # kept for future use but may need to change get_markdown fxn header split reg exs
@@ -351,6 +374,10 @@ metadata_df['id'] = metadata_df['Variable Construct']\
     .str.lower()\
     .str.replace(" |\(|\)|\&|\/","_")\
 + metadata_df.index.astype(str) #some variable constructs have same name
+
+            data_types.append(data_type)
+            spatial_types.append(spatial)
+            column_names.append(cols)
 
 
 ## format and update metadata 
