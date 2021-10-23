@@ -1,0 +1,10 @@
+file_params:
+  #path to opioid policy scan repo
+  local_dir: 'c:/Users/kranz-michael/projects/opioid-policy-scan/data_final'
+  endpoint: 'https://jcoin.datacommons.io/'
+  credentials_path: 'credentials.json'
+file_upload_params:
+  gen3_client_exe_path: 'c:/Users/kranz-michael/Documents/gen3-client.exe'
+  gen3_history_path : 'C:/Users/kranz-michael/.gen3'
+csv_file_save_path: 'files.csv'
+constructs_md : "c:/Users/kranz-michael/projects/opioid-policy-scan/README.md"
