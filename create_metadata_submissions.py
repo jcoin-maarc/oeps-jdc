@@ -4,6 +4,11 @@ and reference file csvs (one for data files and one for metadata files):
 
 note, many_to_many relationships so data files and metadata files are in multiple 
 records --- each with a unique submitter id
+
+-----------------------------------------------------
+be sure to manually check files before submissions as this script depends
+on a fragile text extraction process
+------------------------------------------------------
 '''
 
 import pandas as pd
@@ -11,10 +16,28 @@ import yaml
 import numpy as np
 import re
 
+def add_submitter_id(
+    df,
+    parent_node_id='core_metadata_collections.submitter_id',
+    file_name='file_name',
+    did='object_id'):
+    """Add submitter ID to data frame of files for gen3 submissions"""
+
+    submitter_ids = (df[parent_node_id]+ '_' +
+                          df[file_name].str.rsplit('.', 1).str[0] +
+                          '_' + df[did].str[-4:])
+    return submitter_ids
+
 #read in file dataframe created from the upload_data.py file
 config = yaml.safe_load(open('config.yaml','r'))
-files_df = pd.read_csv(config['csv_file_save_path'])
 
+#replace_space_with_percent = lambda s:s.file_name.str.replace(" ","%",regex=False)
+files_df = (
+    pd.read_csv(config['csv_file_save_path'])
+    # .assign(
+    #     file_name=lambda s: replace_space_with_percent(s) 
+    #)
+)
 #add metadata from file names
 contains = files_df.file_name.str.contains
 #spatial types
@@ -40,11 +63,11 @@ files_df['file_data_type'] = np.select(data_type_cond_list,data_type_choice_list
 #TODO: variable names and descriptions
 #upload metadata
 tbl = []
-variable_constructs = []
+themes = []
 with open(config['constructs_md'],'r',encoding='utf-8') as f:
     for line in f:
         if re.search("^###",line):
-            variable_construct = re.sub("^### |\n","",line)
+            theme = re.sub("^### |\n","",line)
         
         if re.search(".*\|.*\|.*",line) \
             and not re.search("Variable Construct",line) \
@@ -52,7 +75,8 @@ with open(config['constructs_md'],'r',encoding='utf-8') as f:
             row = line.split("|")
             tbl.append(row)
             #for each table line, get the variable construct
-            variable_constructs.append(re.sub(" |Variables","",variable_construct))
+            #delete unnessary text in variable
+            themes.append(re.sub("^ | $|Variables","",theme))
 
 metadata_df = pd.DataFrame(tbl).loc[:,1:5]
 metadata_df.columns = [
@@ -62,10 +86,12 @@ metadata_df.columns = [
     'Metadata',
     'Spatial Scale'
 ]
-metadata_df['Themes'] = variable_constructs
+metadata_df['Themes'] = themes
 #some variable constructs have same name so just use unique ids
 metadata_df['id'] = (
-    metadata_df['Themes'].str.lower() + 
+    metadata_df['Themes']
+    .str.lower()
+    .str.replace(" ","") + 
     metadata_df.index.astype(str) 
 )
 # for data files -- get file prefixes to join with data file dataframe
@@ -77,12 +103,18 @@ metadata_df['metadata_for_data'] = (
     .str.replace("CrosswalkFiles","crosswalk") #crosswalk
 )
 #for markdown metadata files -- join on file name
-metadata_df['metadata_for_markdown'] = metadata_df['Metadata'].str.replace(".*/metadata/|\)| ","")
+metadata_df['metadata_for_markdown'] = (
+    metadata_df['Metadata']
+    .str.replace(".*/metadata/|\)| ","")
+    .str.replace("\%20"," ") #replace markdown url space placeholders with a space
+    #.values
+)
 
 # get file metadata names from file names
 data_file_df = files_df.query("file_data_type!='md'")
 data_file_df['metadata_variable_constructs']  = ( 
-    data_file_df.file_name
+    data_file_df
+    .file_name
     .str.replace("_.*\..*","")
 )
 #geographic and crosswalk are gleaned from data types and not file names
@@ -97,7 +129,7 @@ data_file_df.loc[is_crosswalk,'metadata_variable_constructs'] = 'crosswalk'
 #core_metadata_collection : 
 # ## core_metadata_collection.submitter_id, Variable Construct, Variable Proxy, Source, metadata_file
 ## TODO: get data limitations, data source, etc from extracted
-core_metadata_collection_fields = {
+core_metadata_collection_mappings = {
     'id':'submitter_id',
     'Variable Construct':'title', 
     'Variable Proxy':'description',
@@ -106,35 +138,52 @@ core_metadata_collection_fields = {
     'Themes':'subject'
 }
 
-reference_fields = {
-    'submitter_id':'submitter_id',
-    'data_category':'data_category',
-    'md5sum':'md5sum',
-    'file_size':'file_size',
-    'file_name':'file_name',
+reference_file_mappings = {
     'id':'core_metadata_collections.submitter_id',
     'file_spatial_type':'data_format',
     'file_data_type':'data_type',
     'gen3_object_id':'object_id'
 }
+reference_file_fields = [
+    'submitter_id',
+    'data_category',
+    'md5sum',
+    'file_size',
+    'file_name',	
+    'core_metadata_collections.submitter_id',
+    'data_format',	
+    'data_type',
+    'object_id',
+    'type'
+]
+core_metadata_collection = (
+    metadata_df
+    [core_metadata_collection_mappings.keys()]
+    .rename(columns=core_metadata_collection_mappings)
+)
+# Node name
+core_metadata_collection['type'] = 'core_metadata_collection'
+# Add creator property
+core_metadata_collection['creator'] = 'Center for Spatial Data Science (CSDS) at the University of Chicago'
+# link to project
+core_metadata_collection['projects.code'] = 'OEPS'
 
-core_metadata_collection = metadata_df\
-    [core_metadata_collection_fields]\
-    .assign(type='core_metadata_collection')\
-    .rename(columns=core_metadata_collection_fields)
-
-reference_data_df = data_file_df.set_index('metadata_variable_constructs')\
-    .join(metadata_df.set_index('metadata_for_data'))\
+#join files with metadata -- 
+# note one data file can be in multiple variable constructs
+reference_data_df = (
+    data_file_df.set_index('metadata_variable_constructs')
+    .join(metadata_df.set_index('metadata_for_data'))
+    .rename(columns=reference_file_mappings)
     .assign(
-        submitter_id = lambda x: x.id + "_" +\
-            x.file_name\
-            .str.lower().str.replace("\.","_"),
-        data_category = 'data',
-        type='reference_file'
-    )\
-    [reference_fields.keys()]\
-    .rename(columns=reference_fields)
+        data_category='data',
+        type='reference_file',
+        submitter_id = lambda x: add_submitter_id(x)
+    )
+    [reference_file_fields] 
+)
 
+#join metadata df with files to get only referenced metadata 
+# note one markdown file can be involved in multiple variable constructs
 reference_md_df = metadata_df\
     .set_index('metadata_for_markdown')\
     .join(files_df.set_index('file_name'))\
@@ -142,15 +191,14 @@ reference_md_df = metadata_df\
         file_name = lambda x: x.index,
         file_data_type = 'markdown',
         file_spatial_type='documentation',
-        data_category='documentation'
-    )\
-    .assign(
-        submitter_id = lambda x: x.id + "_"
-            + x.file_name.str.lower().str.replace("\.","_"),
+        data_category='documentation',
         type='reference_file'
     )\
-    [reference_fields.keys()]\
-    .rename(columns=reference_fields)
+    .rename(columns=reference_file_mappings)\
+    .assign(
+        submitter_id = lambda x: add_submitter_id(x)
+    )\
+    [reference_file_fields]
 
 
 reference_data_df.to_csv("metadata/reference_data_df.tsv",sep='\t',index=False)
