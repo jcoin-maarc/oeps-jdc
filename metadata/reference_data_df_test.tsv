@@ -123,7 +123,6 @@ health13_Health02_S_Prevalence_4f4f	data	abea2346f6b8f4331536936928ceb197	5151	H
 health14_Health03_C_6774	data	89445d5004708e38873c0779f6d2f624	39145	Health03_C.csv	health14	County	csv	dg.6VTS/c3777745-dfb2-4fe5-b2e5-a9186ac96774	reference_file
 health14_Health03_S_8009	data	6598397c30be155638c527e6ebcd319f	748	Health03_S.csv	health14	State	csv	dg.6VTS/16403177-5f73-4f6b-a5b5-bbd4ea208009	reference_file
 health14_Health03_T_4b7c	data	a321e78440c0f5050e41999d0218f3a4	1768906	Health03_T.csv	health14	Tract	csv	dg.6VTS/c506a384-ce65-48a3-aa93-3d9163e54b7c	reference_file
-	data	196836aed40cc55297979304b32476fc	637394	Jail-variables_2017.html				dg.6VTS/f2c29c8a-fc20-4a0c-a961-2f086a038948	reference_file
 policy2_PS01_2016_C_3c5a	data	12cd28566de12d16b14ff44c242748f5	453718	PS01_2016_C.csv	policy2	County	csv	dg.6VTS/9d201da2-f474-45fe-9b62-b67cba973c5a	reference_file
 policy3_PS02_2017_C_050a	data	002270fe967f0424b3db686cd1abab62	476589	PS02_2017_C.csv	policy3	County	csv	dg.6VTS/9a712179-c2fd-44aa-ac0b-9f6115ad050a	reference_file
 policy4_PS03_2017_S_faf4	data	5643f2eb868e1ee6fcf41cea96f65483	3846	PS03_2017_S.csv	policy4	State	csv	dg.6VTS/dce34f93-5bb8-4e8e-8263-44e25a75faf4	reference_file
@@ -134,7 +133,6 @@ policy8_PS07_2018_S_ab74	data	d1b9fd9565efb16d3950a81223bf12d5	4137	PS07_2018_S.
 policy9_PS08_2019_S_9278	data	a5fd557581a46bffd3977d8775c3a40b	1540	PS08_2019_S.csv	policy9	State	csv	dg.6VTS/34f72cf4-4221-405a-a9c1-0c934ae39278	reference_file
 policy10_PS09_2017_S_2f7a	data	085f21c58be93a7f500295ffbf12fc10	327	PS09_2017_S.csv	policy10	State	csv	dg.6VTS/69ae05fc-eff9-48d1-809d-109224142f7a	reference_file
 policy11_PS11_S_71dd	data	ebf7d8139a57bd31cf4dcc678e01be2f	5802	PS11_S.csv	policy11	State	csv	dg.6VTS/4d604e7c-9e68-470e-9c2c-b4ba556171dd	reference_file
-	data	7d35c9b4f8670ae52d1151d05f77cab3	639721	Prison-variables_2016.html				dg.6VTS/dc601678-0868-43bb-a60f-ce28e1462e9b	reference_file
 geographicboundaries1_COUNTY_ZIP_0d9e	data	f0aeb20a19e47f7e0cf7b4f10c0a042e	3041556	COUNTY_ZIP.xlsx	geographicboundaries1	Zip	crosswalk	dg.6VTS/0d9224a9-9455-409e-9012-5099e1460d9e	reference_file
 geographicboundaries1_TRACT_ZIP_df04	data	4a7882c04f7de3755018fd107b6d7126	9257662	TRACT_ZIP.xlsx	geographicboundaries1	Zip	crosswalk	dg.6VTS/2121e1e3-4571-49cc-9fec-78ee20e0df04	reference_file
 geographicboundaries1_ZIP_COUNTY_c7a5	data	e63e1ac1b208efe7a7debb6a2ec4b44e	2456064	ZIP_COUNTY.xlsx	geographicboundaries1	County	crosswalk	dg.6VTS/0468deff-5437-41d2-8c73-4f52be7dc7a5	reference_file
@@ -155,5 +153,3 @@ geographicboundaries0_zctas2018_943a	data	f1d4081d5338beff6c66ef5988aefb79	95343
 geographicboundaries0_zctas2018_0d6d	data	e729936bf5360b37a15365fc295a1901	143	zctas2018.prj	geographicboundaries0	Zip	geographic	dg.6VTS/b55565b8-5019-4376-9078-14c18bae0d6d	reference_file
 geographicboundaries0_zctas2018_ca69	data	ceb3a3e49192a58b49b0859ebdbbbc57	90658908	zctas2018.shp	geographicboundaries0	Zip	geographic	dg.6VTS/2e08cf62-f4c9-4f77-ab35-b41dd453ca69	reference_file
 geographicboundaries0_zctas2018_a2b9	data	9b4ccea3a099e39fe506fef3341e5cde	264020	zctas2018.shx	geographicboundaries0	Zip	geographic	dg.6VTS/f9d2d7f2-f15c-4740-9a86-de057792a2b9	reference_file
-	data	b23b2891b485cb6ceb017a6188440457	3090967	us-wide-moudsCleaned.csv		Location	csv	dg.6VTS/de47c394-81f7-4a07-a730-7f930e3a823d	reference_file
-	data	a25502a05c80495d2793486b4c98c11c	3538944	us-wide-moudsCleaned.gpkg		Location	gpkg	dg.6VTS/8b27594e-8bab-4cb3-9455-6f45958feb00	reference_file
