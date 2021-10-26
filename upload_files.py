@@ -126,6 +126,8 @@ class Files:
         gen3 history (ie .gen3). 
         Deletes the local gen3 history and uploads new files
         based on the md5sum and file name
+
+        TODO: upload all at once and with subdirectory
         '''
 
         self.gen3_client_exe_path = Path(gen3_client_exe_path)

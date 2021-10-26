@@ -2,12 +2,8 @@
 create core metadata submission tsv 
 and reference file csvs (one for data files and one for metadata files):
 
-note, many_to_many relationships so data files and metadata files are in multiple 
-records --- each with a unique submitter id
-
 -----------------------------------------------------
-be sure to manually check files before submissions as this script depends
-on a fragile text extraction process
+be sure to manually tsv submission files before actual submission
 ------------------------------------------------------
 '''
 
@@ -16,17 +12,15 @@ import yaml
 import numpy as np
 import re
 
-def add_submitter_id(
+def add_file_submitter_id(
     df,
-    parent_node_id='core_metadata_collections.submitter_id',
     file_name='file_name',
     did='object_id'):
     """Add submitter ID to data frame of files for gen3 submissions"""
 
-    submitter_ids = (df[parent_node_id]+ '_' +
-                          df[file_name].str.rsplit('.', 1).str[0] +
+    submitter_ids = (df[file_name].str.rsplit('.', 1).str[0] +
                           '_' + df[did].str[-4:])
-    return submitter_ids
+    df.insert(0,'submitter_id',submitter_ids)
 
 #read in file dataframe created from the upload_data.py file
 config = yaml.safe_load(open('config.yaml','r'))
@@ -42,7 +36,7 @@ files_df = (
 contains = files_df.file_name.str.contains
 #spatial types
 is_state = contains("_S|state")
-is_county = contains("_C|county")
+is_county = contains("_C|counties")
 is_zip = contains("_Z|zcta")
 is_tract = contains("_T|tract")
 is_location = contains("us-wide-moudsCleaned")
@@ -145,7 +139,6 @@ reference_file_mappings = {
     'gen3_object_id':'object_id'
 }
 reference_file_fields = [
-    'submitter_id',
     'data_category',
     'md5sum',
     'file_size',
@@ -177,11 +170,22 @@ reference_data_df = (
     .assign(
         data_category='data',
         type='reference_file',
-        submitter_id = lambda x: add_submitter_id(x)
     )
     [reference_file_fields] 
 )
 
+#multiple links are specified with comma separated list 
+#originally thought individual records represented one link so added this
+#https://gen3.org/resources/user/submit-data/#specifying-multiple-links
+
+reference_data_df['core_metadata_collections.submitter_id'] = (
+    reference_data_df
+    .fillna('None')
+    .groupby(['file_size','file_name','md5sum','object_id'])
+    ['core_metadata_collections.submitter_id']
+    .transform(lambda x:','.join(x))
+)
+reference_data_df.drop_duplicates(inplace=True)
 #join metadata df with files to get only referenced metadata 
 # note one markdown file can be involved in multiple variable constructs
 reference_md_df = metadata_df\
@@ -195,11 +199,23 @@ reference_md_df = metadata_df\
         type='reference_file'
     )\
     .rename(columns=reference_file_mappings)\
-    .assign(
-        submitter_id = lambda x: add_submitter_id(x)
-    )\
     [reference_file_fields]
+#multiple links are specified with comma separated list 
+#originally thought individual records represented one link so added this
+#https://gen3.org/resources/user/submit-data/#specifying-multiple-links
+reference_md_df['core_metadata_collections.submitter_id'] = (
+    reference_md_df
+    .fillna('None')
+    .groupby(['file_size','file_name','md5sum','object_id'])
+    ['core_metadata_collections.submitter_id']
+    .transform(lambda x:','.join(x))
+)
+reference_data_df.drop_duplicates(inplace=True)
 
+
+#add submitter ids 
+add_file_submitter_id(reference_md_df)
+add_file_submitter_id(reference_data_df)
 
 reference_data_df.to_csv("metadata/reference_data_df.tsv",sep='\t',index=False)
 reference_md_df.to_csv("metadata/reference_md_df.tsv",sep='\t',index=False)
