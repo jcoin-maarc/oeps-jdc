@@ -1,0 +1,1145 @@
+[
+    {
+        "variable": "Medical Marijuana Laws",
+        "numerator": "PS09_data",
+        "nProperty": "MedMarijLaw",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "No laws authorizing adults to use medical marijuana",
+            "Has laws authorizing adults to use medical marijuana"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Public Health Expenditures",
+        "numerator": "PS11_data",
+        "nProperty": "healthExp_S",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Public Welfare Expenditures",
+        "numerator": "PS11_data",
+        "nProperty": "wlfrExp_S",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Corrections Expenditures",
+        "numerator": "PS11_data",
+        "nProperty": "crrctExp_S",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Police & Fire Expenditures",
+        "numerator": "PS11_data",
+        "nProperty": "plcFireExp_S",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Syringe Service Program (SSP) Authorization Laws",
+        "numerator": "PS08_data",
+        "nProperty": "expSSP",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "No laws authorizing Syringe Service Programs",
+            "Has laws authorizing Syringe Service Programs"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Drug Paraphernalia Laws",
+        "numerator": "PS08_data",
+        "nProperty": "noPrphLw",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "Has drug paraphernalia laws",
+            "No drug paraphernalia laws"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Distribution of Syringes Laws",
+        "numerator": "PS08_data",
+        "nProperty": "ntPrFrDsSy",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "Laws Prohibit Free Distribution of Syringes",
+            "Law Does Not Prohibit Free Distribution of Syringes"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Paraphernalia exludes objects used for injecting drugs",
+        "numerator": "PS08_data",
+        "nProperty": "PrExcInj",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "Does NOT Explicitly Exlude Objects Used for Injecting Drugs",
+            "Explicitly Exludes Objects Used for Injecting Drugs"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Paraphernalia does not refer to objects used for injecting drugs",
+        "numerator": "PS08_data",
+        "nProperty": "PrNtRefInj",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "Paraphernalia Definition Refers to Objects Used For Injecting Drugs",
+            "Paraphernalia Definition Does NOT Refer to Objects Used For Injecting Drugs"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Laws removing barriers to SSPs",
+        "numerator": "PS08_data",
+        "nProperty": "noLwRmUnc",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "No Law Removing Barriers or Uncertainty as to SSP Legality",
+            "Has Law Removing Barriers or Uncertainty as to SSP Legality"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Any PDMP (fraction of year in 2017)",
+        "numerator": "PS03_data",
+        "nProperty": "AnyPDMPfr",
+        "fixedScale": [
+            0.5,
+            1
+        ],
+        "fixedLabels": [
+            "Six months",
+            "Entire year"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Any Horowitz PDMP (fraction of year in 2017)",
+        "numerator": "PS03_data",
+        "nProperty": "AnyPDMPHfr",
+        "fixedScale": [
+            0.5,
+            1
+        ],
+        "fixedLabels": [
+            "Six months",
+            "Entire year"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Must-Access PDMP (fraction of year in 2017)",
+        "numerator": "PS03_data",
+        "nProperty": "MsAcPDMPfr",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "None",
+            "Entire year"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Operational PDMP (fraction of year in 2017)",
+        "numerator": "PS03_data",
+        "nProperty": "OpPDMPfr",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "None",
+            "Entire year"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Electronic PDMP (fraction of year in 2017)",
+        "numerator": "PS03_data",
+        "nProperty": "ElcPDMPfr",
+        "fixedScale": [
+            0.5,
+            1
+        ],
+        "fixedLabels": [
+            "Six months",
+            "Entire year"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Total Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "TtlJlPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Female Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "FmlJlPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Male Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "MlJlPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "AAPI Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "AapiJlPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Black Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "BlckJlPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Latinx Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "LtnxJlPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Native American Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "NtvJlPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "White (Non-Hispanic) Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "WhtJlPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Total jail admission rate",
+        "numerator": "PS02_data",
+        "nProperty": "TtlJlAdmr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Pretrial Jail Population Rate",
+        "numerator": "PS02_data",
+        "nProperty": "TtlJlPrtr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Total Prison Population Rate",
+        "numerator": "PS01_data",
+        "nProperty": "TtlPrPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Female Prison Population Rate",
+        "numerator": "PS01_data",
+        "nProperty": "FmlPrPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Male Prison Population Rate",
+        "numerator": "PS01_data",
+        "nProperty": "MlPrPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "AAPI Prison Population Rate",
+        "numerator": "PS01_data",
+        "nProperty": "AapiPrPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Black Prison Population Rate",
+        "numerator": "PS01_data",
+        "nProperty": "BlckPrPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Latinx Prison Population Rate",
+        "numerator": "PS01_data",
+        "nProperty": "LtnxPrPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Native American Prison Population Rate",
+        "numerator": "PS01_data",
+        "nProperty": "NtvPrPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "White (Non-Hispanic) Prison Population Rate",
+        "numerator": "PS01_data",
+        "nProperty": "WhtPrPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Total Prison Admission Rate",
+        "numerator": "PS01_data",
+        "nProperty": "TtlPrAPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Female Prison Admission Rate",
+        "numerator": "PS01_data",
+        "nProperty": "FmlPrAPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Male Prison Admission Rate",
+        "numerator": "PS01_data",
+        "nProperty": "MlPrAPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "AAPI Prison Admission Rate",
+        "numerator": "PS01_data",
+        "nProperty": "AapiPrAPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Black Prison Admission Rate",
+        "numerator": "PS01_data",
+        "nProperty": "BlckPrAPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Latinx Prison Admission Rate",
+        "numerator": "PS01_data",
+        "nProperty": "LtnxPrAPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Native American Prison Admission Rate",
+        "numerator": "PS01_data",
+        "nProperty": "NtvPrAPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "White (Non-Hispanic) Prison Admission Rate",
+        "numerator": "PS01_data",
+        "nProperty": "WhtPrAPpr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Any Good Samaritan Law (fraction of year in 2018)",
+        "numerator": "PS04_data",
+        "nProperty": "AnyGSLfr",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Good Samaritan Law Protecting Arrest (fraction of year in 2018)",
+        "numerator": "PS04_data",
+        "nProperty": "GSLArrfr",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "1: Has Good Samaritan Law Protecting Arrest for entire year",
+            "0: No Good Samaritan Law Protecting Arrest"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Naloxone Law in Effect (fraction of year in 2017)",
+        "numerator": "PS05_data",
+        "nProperty": "NalPrStfr",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Naloxone Law allowing distribution through a standing or order (fraction of year in 2017)",
+        "numerator": "PS05_data",
+        "nProperty": "AnyNalfr",
+        "numberOfBins": 4,
+        "colorScale": ""
+    },
+    {
+        "variable": "Naloxone Law allowing pharmacists prescriptive authority (fraction of year in 2017)",
+        "numerator": "PS05_data",
+        "nProperty": "NalPresfr",
+        "numberOfBins": 4,
+        "colorScale": ""
+    },
+    {
+        "variable": "Total Medicaid Spending",
+        "numerator": "PS06_data",
+        "nProperty": "TtlMedExpN",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Traditional Medicaid Federal Spending",
+        "numerator": "PS07_data",
+        "nProperty": "TradFedExp",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Traditional Medicaid State Spending",
+        "numerator": "PS07_data",
+        "nProperty": "TradSttExp",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Expansion Medicaid Federal Spending",
+        "numerator": "PS07_data",
+        "nProperty": "ExpnFedExp",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Expansion Medicaid State Spending",
+        "numerator": "PS07_data",
+        "nProperty": "ExpnSttExp",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Drug-Related Death Rate",
+        "numerator": "Health01_data",
+        "nProperty": "rawDeathRt",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "HCV Infection Rate",
+        "numerator": "Health02_1_data",
+        "nProperty": "State Rate",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "HCV Mortality Rate",
+        "numerator": "Health02_2_data",
+        "nProperty": "State Death Rate_2017",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "HCV Mortality Rate",
+        "numerator": "Health02_2_data",
+        "nProperty": "County HCV Death Rate_2017",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Count of Primary Care Physicians (PCPs)",
+        "numerator": "Health03_data",
+        "nProperty": "pcp_total",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Count of Specialty Physicians",
+        "numerator": "Health03_data",
+        "nProperty": "sp_total",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to nearest MOUD (all)",
+        "numerator": "Access01_data",
+        "nProperty": "moudMinDis",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to nearest methadone provider",
+        "numerator": "Access01_data",
+        "nProperty": "metMinDis",
+        "numberOfBins": 7,
+        "colorScale": ""
+    },
+    {
+        "variable": "Driving time (min) to nearest methadone provider",
+        "numerator": "Access01_subvar_data",
+        "nProperty": "menTime",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Count of methadone providers in 30 minutes",
+        "numerator": "Access01_subvar_data",
+        "nProperty": "metCount",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to nearest buprenorphine provider",
+        "numerator": "Access01_data",
+        "nProperty": "bupMinDis",
+        "numberOfBins": 7,
+        "colorScale": ""
+    },
+    {
+        "variable": "Driving time (min) to nearest buprenorphine provider",
+        "numerator": "Access01_subvar_data",
+        "nProperty": "bupTime",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Count of buprenorphine providers in 30 minutes",
+        "numerator": "Access01_subvar_data",
+        "nProperty": "bupCount",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to nearest naltrexone provider",
+        "numerator": "Access01_data",
+        "nProperty": "nalMinDis",
+        "numberOfBins": 7,
+        "colorScale": ""
+    },
+    {
+        "variable": "Driving time (min) to nearest naltrexone provider",
+        "numerator": "Access01_subvar_data",
+        "nProperty": "nalTime",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Count of naltrexone providers in 30 minutes",
+        "numerator": "Access01_subvar_data",
+        "nProperty": "nalCount",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to nearest FQHC",
+        "numerator": "Access02_data",
+        "nProperty": "minDisFQHC",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to nearest hospital",
+        "numerator": "Access03_data",
+        "nProperty": "minDisHosp",
+        "numberOfBins": 7,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to nearest pharmacy",
+        "numerator": "Access04_data",
+        "nProperty": "minDisRx",
+        "numberOfBins": 7,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to nearest mental health provider",
+        "numerator": "Access05_data",
+        "nProperty": "minDisMH",
+        "numberOfBins": 7,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to substance use treatment (SUT) facility",
+        "numerator": "Access06_data",
+        "nProperty": "minDist_SUT",
+        "numberOfBins": 7,
+        "colorScale": ""
+    },
+    {
+        "variable": "Distance (mi) to opioid use treatment facility",
+        "numerator": "Access07_data",
+        "nProperty": "minDist_OTP",
+        "numberOfBins": 7,
+        "colorScale": ""
+    },
+    {
+        "variable": "% White Population",
+        "numerator": "DS01_data",
+        "nProperty": "whiteP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Black/African American Population",
+        "numerator": "DS01_data",
+        "nProperty": "blackP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Hispanic/Latinx Population",
+        "numerator": "DS01_data",
+        "nProperty": "hispP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Native American/Alaska Native Population",
+        "numerator": "DS01_data",
+        "nProperty": "amIndP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Asian Population",
+        "numerator": "DS01_data",
+        "nProperty": "asianP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Native Hawaiian & Other PI Population",
+        "numerator": "DS01_data",
+        "nProperty": "pacIsP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Other (race) Population",
+        "numerator": "DS01_data",
+        "nProperty": "otherP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 18-65",
+        "numerator": "DS01_data",
+        "nProperty": "age18_64",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 0-4",
+        "numerator": "DS01_data",
+        "nProperty": "age0_4",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 5-14",
+        "numerator": "DS01_data",
+        "nProperty": "age5_14",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 15-19",
+        "numerator": "DS01_data",
+        "nProperty": "age15_19",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 20-24",
+        "numerator": "DS01_data",
+        "nProperty": "age20_24",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 15-44",
+        "numerator": "DS01_data",
+        "nProperty": "age15_44",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 45-49",
+        "numerator": "DS01_data",
+        "nProperty": "age45_49",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 50-54",
+        "numerator": "DS01_data",
+        "nProperty": "age50_54",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 55-59",
+        "numerator": "DS01_data",
+        "nProperty": "age55_59",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 60-64",
+        "numerator": "DS01_data",
+        "nProperty": "age60_64",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Population, Age 65+",
+        "numerator": "DS01_data",
+        "nProperty": "ageOv65",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Population, Age 15-24",
+        "numerator": "DS01_data",
+        "nProperty": "a15_24P",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Population, Age under 45",
+        "numerator": "DS01_data",
+        "nProperty": "und45P",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Population, Age 65+",
+        "numerator": "DS01_data",
+        "nProperty": "ovr65P",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Population with Disability",
+        "numerator": "DS01_data",
+        "nProperty": "disbP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Population without High School Degree",
+        "numerator": "DS01_data",
+        "nProperty": "noHSP",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Social Vulnerability Index (SVI)",
+        "numerator": "DS03_data",
+        "nProperty": "SVIS",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Total Veteran Population",
+        "numerator": "DS04_data",
+        "nProperty": "TotalVetPop",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "% Veteran Population",
+        "numerator": "DS04_data",
+        "nProperty": "VetPercent",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Total Male Veteran Population",
+        "numerator": "DS04_data",
+        "nProperty": "MaleVetPop",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Male Veteran Population, Age 18-34",
+        "numerator": "DS04_data",
+        "nProperty": "MaleVet18To34",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Male Veteran Population, Age 35-54",
+        "numerator": "DS04_data",
+        "nProperty": "MaleVet35To54",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Male Veteran Population, Age 55-64",
+        "numerator": "DS04_data",
+        "nProperty": "MaleVet55To64",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Male Veteran Population, Age 65-74",
+        "numerator": "DS04_data",
+        "nProperty": "MaleVet65To74",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Male Veteran Population, Age 75+",
+        "numerator": "DS04_data",
+        "nProperty": "MaleVet75Plus",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Female Veteran Population, Age 18-34",
+        "numerator": "DS04_data",
+        "nProperty": "FemaleVet18To34",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Female Veteran Population, Age 35-54",
+        "numerator": "DS04_data",
+        "nProperty": "FemaleVet35To54",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Female Veteran Population, Age 55-64",
+        "numerator": "DS04_data",
+        "nProperty": "FemaleVet55To64",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Female Veteran Population, Age 65-74",
+        "numerator": "DS04_data",
+        "nProperty": "FemaleVet65To74",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Female Veteran Population, Age 75+",
+        "numerator": "DS04_data",
+        "nProperty": "FemaleVet75Plus",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Poverty %",
+        "numerator": "EC03",
+        "nProperty": "povP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Per Capita Income",
+        "numerator": "EC03",
+        "nProperty": "pciE",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Unemployment %",
+        "numerator": "EC03",
+        "nProperty": "unempP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Count of Working Population",
+        "numerator": "EC01",
+        "nProperty": "totWrkE",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Employed % - Education",
+        "numerator": "EC01",
+        "nProperty": "eduP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Employed % - High Risk of Injury ",
+        "numerator": "EC01",
+        "nProperty": "hghRskP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Employed % - Health Care",
+        "numerator": "EC01",
+        "nProperty": "hltCrP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Employed % - Retail",
+        "numerator": "EC01",
+        "nProperty": "retailP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Count of Essential Workers",
+        "numerator": "EC02",
+        "nProperty": "essnWrkE",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Essential Workers %",
+        "numerator": "EC02",
+        "nProperty": "essnWrkP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Foreclosure & Delinquency %",
+        "numerator": "EC04",
+        "nProperty": "fordq_rate",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Urban-Suburban-Rural",
+        "numerator": "BE02",
+        "nProperty": "rurality",
+        "fixedScale": [
+            "Rural",
+            "Suburban",
+            "Urban"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Urban Population Total (2010)",
+        "numerator": "BE02_C",
+        "nProperty": "urbPop10",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Rural Population Total (2010)",
+        "numerator": "BE02_C",
+        "nProperty": "rurlPop10",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Rural Population % (2010)",
+        "numerator": "BE02_C",
+        "nProperty": "cenRuralP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Total Occupied Housing Units",
+        "numerator": "BE01",
+        "nProperty": "totUnits",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Occupied Housing Units %",
+        "numerator": "BE01",
+        "nProperty": "occP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Vacant Housing Units %",
+        "numerator": "BE01",
+        "nProperty": "vacantP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Mobile Homes %",
+        "numerator": "BE01",
+        "nProperty": "mobileP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Long-Term Occupancy %",
+        "numerator": "BE01",
+        "nProperty": "lngTermP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Rentals %",
+        "numerator": "BE01",
+        "nProperty": "rentalP",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Housing Unit Density",
+        "numerator": "BE01",
+        "nProperty": "unitDens",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Land Area (Square Miles)",
+        "numerator": "BE03",
+        "nProperty": "areaSqMi",
+        "numberOfBins": 8,
+        "colorScale": ""
+    },
+    {
+        "variable": "Total Alcohol Outlets",
+        "numerator": "BE03",
+        "nProperty": "alcTotal",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Alcohol Outlets Density",
+        "numerator": "BE03",
+        "nProperty": "alcDens",
+        "numberOfBins": 6,
+        "colorScale": ""
+    },
+    {
+        "variable": "Segregation: Dissimilarity (Black)",
+        "numerator": "BE05",
+        "nProperty": "dissim.b",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Segregation: Interaction (Black)",
+        "numerator": "BE05",
+        "nProperty": "inter.bw",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Segregation: Isolation (Black)",
+        "numerator": "BE05",
+        "nProperty": "iso.b",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Segregation: Dissimilarity (Hispanic)",
+        "numerator": "BE05",
+        "nProperty": "dissim.h",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Segregation: Interaction (Hispanic)",
+        "numerator": "BE05",
+        "nProperty": "inter.hw",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Segregation: Isolation (Hispanic)",
+        "numerator": "BE05",
+        "nProperty": "iso.h",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Segregation: Dissimilarity (Asian)",
+        "numerator": "BE05",
+        "nProperty": "dissim.a"
+    },
+    {
+        "variable": "Segregation: Interaction (Asian)",
+        "numerator": "BE05",
+        "nProperty": "inter.aw",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Segregation: Isolation (Asian)",
+        "numerator": "BE05",
+        "nProperty": "iso.a",
+        "numberOfBins": 5,
+        "colorScale": ""
+    },
+    {
+        "variable": "Hypersegregated Cities",
+        "numerator": "BE04",
+        "nProperty": "DmySgrg",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "Not hypersegregated city & metro area",
+            "Hypersegregated city & metro area"
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "African American South",
+        "numerator": "BE04",
+        "nProperty": "DmyBlckBlt",
+        "fixedScale": [
+            0,
+            1
+        ],
+        "fixedLabels": [
+            "Not African American South / \"Black Belt\"",
+            "African American South / \"Black Belt\""
+        ],
+        "colorScale": ""
+    },
+    {
+        "variable": "Native American & Tribal Lands",
+        "numerator": "BE04",
+        "nProperty": "PrcNtvRsrv",
+        "numberOfBins": 5,
+        "colorScale": ""
+    }
+]

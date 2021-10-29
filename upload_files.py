@@ -169,3 +169,17 @@ files.upload_new_files(**config['file_upload_params'])
 #get local files with object ids (should all have object ids if uploads were successful)
 files_df = files.merge_local_and_gen3_file_info()
 files_df.to_csv(config['csv_file_save_path'])
+
+
+# auth = Gen3Auth(refresh_file='credentials.json')
+# sub = Gen3Submission(auth)
+
+
+# sub.delete_nodes("JCOIN", "TEST", ['reference_file','core_metadata_collection'])
+
+
+# sub.delete_nodes("JCOIN", "OEPS", ['reference_file','core_metadata_collection'])
+
+
+
+
