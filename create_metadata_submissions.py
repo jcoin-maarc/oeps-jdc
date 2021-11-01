@@ -49,10 +49,15 @@ is_csv = contains("\.csv$")
 is_md = contains("\.md$")
 is_geographic = contains("dbf$|prj$|shp$|shx$")
 is_crosswalk = contains('COUNTY_ZIP|TRACT_ZIP|ZIP_COUNTY|ZIP_TRACT')
+is_xlsx = contains('.xlsx$')
 data_type_cond_list = [is_gpkg,is_csv,is_md,is_geographic,is_crosswalk]
-data_type_choice_list = ['gpkg','csv','md','geographic','crosswalk']
+data_type_choice_list = ['gpkg','Geographic Data','Documentation','Geographic Boundaries','Geographic Crosswalk']
+
 files_df['file_data_type'] = np.select(data_type_cond_list,data_type_choice_list,None)
 
+data_format_cond_list = [is_gpkg,is_csv,is_md,is_geographic,is_xlsx]
+data_format_choice_list = ['GPKG','CSV','MD','SHAPEFILE','XLSX']
+files_df['file_data_format'] = np.select(data_format_cond_list,data_format_choice_list)
 
 #TODO: variable names and descriptions
 #upload metadata
@@ -73,6 +78,7 @@ with open(config['constructs_md'],'r',encoding='utf-8') as f:
             themes.append(re.sub("^ | $|Variables","",theme))
 
 metadata_df = pd.DataFrame(tbl).loc[:,1:5]
+
 metadata_df.columns = [
     'Variable Construct',
     'Variable Proxy',
@@ -81,39 +87,62 @@ metadata_df.columns = [
     'Spatial Scale'
 ]
 metadata_df['Themes'] = themes
+
+metadata_df['Spatial Scale'].\
+    replace(" ","",regex=True,inplace=True)
+
+def copy_metadata_for_spatial_scales(series):
+    ''' 
+    create record of metadata for each spatial scale
+    ''' 
+    series_list = [
+        series.replace({series['Spatial Scale']:x}) 
+        for x in series['Spatial Scale'].split(",")
+    ]
+    return pd.DataFrame(series_list)
+
+metadata_expanded_df = pd.concat(
+    [
+        copy_metadata_for_spatial_scales(df)
+        for i,df in metadata_df.iterrows()
+    ]
+)
+metadata_expanded_df.reset_index(drop=True,inplace=True)
 #some variable constructs have same name so just use unique ids
-metadata_df['id'] = (
-    metadata_df['Themes']
+metadata_expanded_df['id'] = (
+    metadata_expanded_df['Themes']
     .str.lower()
     .str.replace(" ","") + 
-    metadata_df.index.astype(str) 
+    '_' +
+    metadata_expanded_df['Spatial Scale'].str.lower() +
+    metadata_expanded_df.index.astype(str) 
 )
 # for data files -- get file prefixes to join with data file dataframe
-metadata_df['metadata_for_data'] = (
-    metadata_df.Metadata
+metadata_expanded_df['metadata_for_data'] = (
+    metadata_expanded_df.Metadata
     .str.replace(" ","")
     .str.extract('([A-Za-z]+\d\d|GeographicBoundaries|CrosswalkFiles)')[0]
     .str.replace("GeographicBoundaries","geographic") #geographic
-    .str.replace("CrosswalkFiles","crosswalk") #crosswalk
+    .str.replace("CrosswalkFiles","crosswalk") #crosswalk 
 )
 #for markdown metadata files -- join on file name
-metadata_df['metadata_for_markdown'] = (
-    metadata_df['Metadata']
+metadata_expanded_df['metadata_for_markdown'] = (
+    metadata_expanded_df['Metadata']
     .str.replace(".*/metadata/|\)| ","")
     .str.replace("\%20"," ") #replace markdown url space placeholders with a space
     #.values
 )
 
 # get file metadata names from file names
-data_file_df = files_df.query("file_data_type!='md'")
+data_file_df = files_df.loc[files_df['file_data_format'].str.contains("CSV|SHAPEFILE")]
 data_file_df['metadata_variable_constructs']  = ( 
     data_file_df
     .file_name
     .str.replace("_.*\..*","")
 )
 #geographic and crosswalk are gleaned from data types and not file names
-is_geo = data_file_df.file_data_type=='geographic'
-is_crosswalk = data_file_df.file_data_type=='crosswalk'
+is_geo = data_file_df.file_data_type=='Geographic Boundaries'
+is_crosswalk = data_file_df.file_data_type=='Geographic Crosswalk'
 data_file_df.loc[is_geo,'metadata_variable_constructs'] = 'geographic'
 data_file_df.loc[is_crosswalk,'metadata_variable_constructs'] = 'crosswalk'
 
@@ -127,15 +156,16 @@ core_metadata_collection_mappings = {
     'id':'submitter_id',
     'Variable Construct':'title', 
     'Variable Proxy':'description',
-     'Source':'source', 
-     'Metadata':'relation',
-    'Themes':'subject'
+    'Source':'source', 
+    'Metadata':'relation',
+    'Themes':'subject',
+    'Spatial Scale':'data_type' # using data_type as its already ETL'ed. TODO: ETL the coverage property
 }
-
 reference_file_mappings = {
     'id':'core_metadata_collections.submitter_id',
-    'file_spatial_type':'data_format',
+    'file_spatial_type':'data_category',
     'file_data_type':'data_type',
+    'file_data_format':'data_format',
     'gen3_object_id':'object_id'
 }
 reference_file_fields = [
@@ -150,7 +180,7 @@ reference_file_fields = [
     'type'
 ]
 core_metadata_collection = (
-    metadata_df
+    metadata_expanded_df
     [core_metadata_collection_mappings.keys()]
     .rename(columns=core_metadata_collection_mappings)
 )
@@ -164,11 +194,15 @@ core_metadata_collection['projects.code'] = 'OEPS'
 #join files with metadata -- 
 # note one data file can be in multiple variable constructs
 reference_data_df = (
-    data_file_df.set_index('metadata_variable_constructs')
-    .join(metadata_df.set_index('metadata_for_data'))
+    data_file_df
+    .merge(
+        metadata_expanded_df,
+        how='left',
+        left_on=['metadata_variable_constructs','file_spatial_type'],
+        right_on=['metadata_for_data','Spatial Scale']
+    )
     .rename(columns=reference_file_mappings)
     .assign(
-        data_category='data',
         type='reference_file',
     )
     [reference_file_fields] 
@@ -188,18 +222,23 @@ reference_data_df['core_metadata_collections.submitter_id'] = (
 reference_data_df.drop_duplicates(inplace=True)
 #join metadata df with files to get only referenced metadata 
 # note one markdown file can be involved in multiple variable constructs
-reference_md_df = metadata_df\
-    .set_index('metadata_for_markdown')\
-    .join(files_df.set_index('file_name'))\
+reference_md_df = (
+    metadata_expanded_df
+    .merge(
+        files_df,
+        how='left',
+        right_on=['file_name'],
+        left_on=['metadata_for_markdown']
+    )
     .assign(
-        file_name = lambda x: x.index,
         file_data_type = 'markdown',
-        file_spatial_type='documentation',
-        data_category='documentation',
+        file_spatial_type='Documentation',
+        data_category='Documentation',
         type='reference_file'
-    )\
-    .rename(columns=reference_file_mappings)\
+    )
+    .rename(columns=reference_file_mappings)
     [reference_file_fields]
+)
 #multiple links are specified with comma separated list 
 #originally thought individual records represented one link so added this
 #https://gen3.org/resources/user/submit-data/#specifying-multiple-links
@@ -210,8 +249,7 @@ reference_md_df['core_metadata_collections.submitter_id'] = (
     ['core_metadata_collections.submitter_id']
     .transform(lambda x:','.join(x))
 )
-reference_data_df.drop_duplicates(inplace=True)
-
+reference_md_df.drop_duplicates(inplace=True)
 
 #add submitter ids 
 add_file_submitter_id(reference_md_df)
@@ -220,3 +258,4 @@ add_file_submitter_id(reference_data_df)
 reference_data_df.to_csv("metadata/reference_data_df.tsv",sep='\t',index=False)
 reference_md_df.to_csv("metadata/reference_md_df.tsv",sep='\t',index=False)
 core_metadata_collection.to_csv("metadata/core_metadata_collection.tsv",sep='\t',index=False)
+

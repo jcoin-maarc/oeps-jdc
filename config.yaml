@@ -1,6 +1,6 @@
 file_params:
   #path to opioid policy scan repo
-  local_dir: 'c:/Users/kranz-michael/projects/opioid-policy-scan/data_final'
+  local_dir: 'c:/Users/kranz-michael/projects/opioid-policy-scan/'
   endpoint: 'https://jcoin.datacommons.io/'
   credentials_path: 'credentials.json'
 file_upload_params:
