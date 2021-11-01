@@ -50,7 +50,8 @@ Files may be uploaded using the upload_files.py script:
 
 Uploading files makes use of the [Gen3 Client](https://github.com/uc-cdis/cdis-data-client/releases)
 
-
+This script will also create a folder containing local files with their mapped
+gen3 object_ids, file size, md5 check sum to create the metadata submission tsvs (see below)
 ## Updating Metadata
 
 Uploaded files may be mapped to their metadata by creating tsv submissions 
@@ -70,3 +71,9 @@ environment).
  In addition, you'll need to generate an API key from within the
 JDC (under Profile) (and specify the path in the config file -- see above). 
 
+## Manual curation of mapped variables
+
+the manual-curation folder contains code used to create the semi-manually curated variable mappings csv. This csv is useful because it provides a mapping of individual variables to variable constructs and files to create datasets containing as many variables as desired with an easy look up method 
+(ie this file)
+
+This `mapped_variable.csv` is located in the `metadata` directory.
