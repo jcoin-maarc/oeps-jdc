@@ -3,10 +3,13 @@ reads in the json objects created from the .js files from the Spatial Center at 
 OEPS web application and joins with the entire list of variables to see which are mapped.
 
 note: the stringify_js_objects.html was taken from the current js objects in the OEPS repo (explorer branch)
+
+
 '''
 import json
 import pandas as pd
 from pathlib import Path
+import numpy as np
 
 with open('variables-oeps.json','r') as f:
     variables = pd.DataFrame(json.load(f)).set_index('numerator')
@@ -43,3 +46,28 @@ data_files_and_variables = pd.concat(
 set_index(['file','nProperty']).\
 join(variables_with_file_name)
 
+
+# code to add more variables to manually curated file 
+# ie after initial creation by above code
+# manual_curation = pd.read_csv('metadata/mapped_variables.csv')
+# determine_geo = lambda geoid: manual_curation.nProperty==geoid
+
+# is_geo_list = [
+#     determine_geo(x)
+#     for x in ['STATEFP','COUNTYFP','ZCTA','TRACTCE','GEOID']
+# ]
+# geo_desc_list = [
+#     '2-digit State code',
+#     '5-digit County code (state + county)',
+#     '5-digit ZIP Code Tract Area (ZCTA)',
+#     '6-digit Census Tract designation',
+#     'Unique 11-digit ID for Census Tracts (state + county + tract)'
+# ]
+
+# manual_curation['variable'] = np.select(
+#     is_geo_list,
+#     geo_desc_list,
+#     manual_curation['variable']
+# )
+
+# manual_curation.to_csv('mapped_variables.csv')
