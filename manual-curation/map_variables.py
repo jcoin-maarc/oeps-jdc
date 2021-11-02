@@ -71,3 +71,42 @@ join(variables_with_file_name)
 # )
 
 # manual_curation.to_csv('mapped_variables.csv')
+
+#read in file dataframe created from the upload_data.py file
+config = yaml.safe_load(open('config.yaml','r'))
+
+#replace_space_with_percent = lambda s:s.file_name.str.replace(" ","%",regex=False)
+files_df = (
+    pd.read_csv(config['csv_file_save_path'])
+    # .assign(
+    #     file_name=lambda s: replace_space_with_percent(s) 
+    #)
+)
+#add metadata from file names
+contains = files_df.file_name.str.contains
+#spatial types
+is_state = contains("_S|state")
+is_county = contains("_C|counties")
+is_zip = contains("_Z|zcta")
+is_tract = contains("_T|tract")
+is_location = contains("us-wide-moudsCleaned")
+spatial_cond_list = [is_state,is_county,is_zip,is_tract,is_location]
+spatial_choice_list = ['State','County','Zip','Tract','Location']
+files_df['file_spatial_type'] = np.select(spatial_cond_list,spatial_choice_list,None)
+#data types
+is_gpkg = contains("\.gpkg$")
+is_csv = contains("\.csv$")
+is_md = contains("\.md$")
+is_geographic = contains("dbf$|prj$|shp$|shx$")
+is_crosswalk = contains('COUNTY_ZIP|TRACT_ZIP|ZIP_COUNTY|ZIP_TRACT')
+is_xlsx = contains('.xlsx$')
+data_type_cond_list = [is_gpkg,is_csv,is_md,is_geographic,is_crosswalk]
+data_type_choice_list = ['gpkg','Geographic Data','Documentation','Geographic Boundaries','Geographic Crosswalk']
+
+files_df['file_data_type'] = np.select(data_type_cond_list,data_type_choice_list,None)
+
+data_format_cond_list = [is_gpkg,is_csv,is_md,is_geographic,is_xlsx]
+data_format_choice_list = ['GPKG','CSV','MD','SHAPEFILE','XLSX']
+files_df['file_data_format'] = np.select(data_format_cond_list,data_format_choice_list)
+
+#

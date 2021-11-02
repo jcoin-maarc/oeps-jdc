@@ -3,7 +3,7 @@ create core metadata submission tsv
 and reference file csvs (one for data files and one for metadata files):
 
 -----------------------------------------------------
-be sure to manually tsv submission files before actual submission
+be sure to manually check tsv submission files before actual submission
 ------------------------------------------------------
 '''
 
@@ -255,7 +255,7 @@ reference_md_df.drop_duplicates(inplace=True)
 add_file_submitter_id(reference_md_df)
 add_file_submitter_id(reference_data_df)
 
-reference_data_df.to_csv("metadata/reference_data_df.tsv",sep='\t',index=False)
+reference_data_df.to_csv("metadata/reference_data_all_df.tsv",sep='\t',index=False)
 reference_md_df.to_csv("metadata/reference_md_df.tsv",sep='\t',index=False)
 core_metadata_collection.to_csv("metadata/core_metadata_collection.tsv",sep='\t',index=False)
 

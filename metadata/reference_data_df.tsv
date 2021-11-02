@@ -94,6 +94,7 @@ Health02_S_Prevalence_4f4f	State	abea2346f6b8f4331536936928ceb197	5151	Health02_
 Health03_C_6774	County	89445d5004708e38873c0779f6d2f624	39145	Health03_C.csv	health_county23	CSV	Geographic Data	dg.6VTS/c3777745-dfb2-4fe5-b2e5-a9186ac96774	reference_file
 Health03_S_8009	State	6598397c30be155638c527e6ebcd319f	748	Health03_S.csv	health_state24	CSV	Geographic Data	dg.6VTS/16403177-5f73-4f6b-a5b5-bbd4ea208009	reference_file
 Health03_T_4b7c	Tract	a321e78440c0f5050e41999d0218f3a4	1768906	Health03_T.csv	health_tract22	CSV	Geographic Data	dg.6VTS/c506a384-ce65-48a3-aa93-3d9163e54b7c	reference_file
+us-wide-moudsCleaned_823d	Location	b23b2891b485cb6ceb017a6188440457	3090967	us-wide-moudsCleaned.csv	health_locations	CSV	Geographic Data	dg.6VTS/de47c394-81f7-4a07-a730-7f930e3a823d	reference_file
 PS01_2016_C_3c5a	County	12cd28566de12d16b14ff44c242748f5	453718	PS01_2016_C.csv	policy_county7	CSV	Geographic Data	dg.6VTS/9d201da2-f474-45fe-9b62-b67cba973c5a	reference_file
 PS02_2017_C_050a	County	002270fe967f0424b3db686cd1abab62	476589	PS02_2017_C.csv	policy_county8	CSV	Geographic Data	dg.6VTS/9a712179-c2fd-44aa-ac0b-9f6115ad050a	reference_file
 PS03_2017_S_faf4	State	5643f2eb868e1ee6fcf41cea96f65483	3846	PS03_2017_S.csv	policy_state9	CSV	Geographic Data	dg.6VTS/dce34f93-5bb8-4e8e-8263-44e25a75faf4	reference_file

@@ -6,5 +6,9 @@ file_params:
 file_upload_params:
   gen3_client_exe_path: 'c:/Users/kranz-michael/Documents/gen3-client.exe'
   gen3_history_path : 'C:/Users/kranz-michael/.gen3'
-csv_file_save_path: 'files.csv'
+csv_file_save_path: 'data/files.csv'
 constructs_md : "c:/Users/kranz-michael/projects/opioid-policy-scan/README.md"
+joined_file_params:
+  local_dir: 'data'
+  endpoint: 'https://jcoin.datacommons.io/'
+  credentials_path: 'credentials.json'

@@ -1,8 +1,8 @@
+''' 
+utilities for working with local files,
+comparing with gen3 file objects,
+and OEPS specific file transformation functions
 '''
-upload any new local files
-and save these local files with the gen3 object ids in a csv file
-'''
-
 #conda create -n oeps-wrangler
 #TODO: Add a regex flag to all replace functions
 #FutureWarning: The default value of regex will change from True to False in a future version.
@@ -79,7 +79,7 @@ def get_gen3_files(index):
     df['md5sum'] = df.hashes.map(lambda x: x.get('md5'))
     df['file_size'] = df['size'].fillna(0).astype(np.int64)
     df.rename(columns={'did':'object_id'}, inplace=True)
-    #df = df.sort_values('updated_date').groupby(['file_name','md5sum']).tail(1)
+    df = df.sort_values('updated_date').groupby(['file_name','md5sum']).tail(1)
     df = df[['object_id','file_name','file_size','md5sum']]
     return df
 
@@ -114,8 +114,8 @@ class Files:
             local_files_df
             .merge(gen3_files_df,
                 on=['file_name','md5sum','file_size'],
-                how='left',
-                validate='one_to_one')
+                how='left')#,
+                #validate='one_to_one')
             .rename(columns={"object_id":"gen3_object_id"})
         )
         return files_df
@@ -171,37 +171,112 @@ class Files:
     #         f'--include-subdirname=true'
     #     )
     #     return output.read()
-        
 
-#upload OEPS files and save file propreties to a file for metadata submissions etc
-config = yaml.safe_load(open('config.yaml','r'))
-files = Files(**config['file_params'])
-#files.upload_all_files_with_subdirs(**config['file_upload_params'])
-files.upload_new_files(**config['file_upload_params'])
-#get local files with object ids (should all have object ids if uploads were successful)
-files_df = files.merge_local_and_gen3_file_info()
-files_df.to_csv(config['csv_file_save_path'])
+def get_prefix(x):
+    ''' 
+    get prefix of file name without the spatial scale identifier
+    or the file extension
+    ''' 
+    return x.file_name.str.replace("_[A-Z]\.csv","",regex=True)
 
+def get_spatial_join(x):
+    ''' 
+    get spatial id name for joining data frames
+    '''
+    spatial_scale_map = {
+        "Z":"ZCTA",
+        "T":"GEOID",
+        "S":"STATEFP",
+        "C":"COUNTYFP"
+    }
+    return (
+        x.file_name
+        .str.extract("(_[A-Z]\.csv)",expand=False)
+        .str.replace("_|\.csv","",regex=True)
+        .replace(spatial_scale_map)
+    )
 
-# upload joined local data files and save to list
+def read_csv_file(file_info_series,with_file_prefix=True):
+    ''' 
+    get a dataframe based on a series
+    with a file_path, file_join, and file_prefix 
 
+    For the geo, columns pad with leading zeros
+    based on expected length. Do not include files 
+    with duplicate primary geo ids.
+    ''' 
+    s = file_info_series
+    geo_dtypes = {
+            'COUNTYFP':'str',
+            'STATEFP':'str',
+            'ZCTA':'str',
+            'GEOID':'str',
+            'TRACTCE':'str'
+        }
+    geo_lengths = {
+            'COUNTYFP':5,
+            'STATEFP':2,
+            'ZCTA':5,
+            'GEOID':11,
+            'TRACTCE':6  
+    }
+    df = pd.read_csv(s.loc['file_path'],dtype=geo_dtypes)
 
+    #missing geo ids
+    is_invalid_geo_na = df[s.loc['file_join']].isna()
+    num_invalid_geo_na = is_invalid_geo_na.sum()
 
+    #not the correct geo ids given the expected length -- if no dups, this could be due to 
+    #no leading 0s -- which was confirmed by SPatial Science Group
+    is_invalid_geo_length = df[s.loc['file_join']].str.len()!=geo_lengths[s.loc['file_join']]
+    num_invalid_geo_length = is_invalid_geo_length.sum()
 
+    num_invalid_geo_dups = (df[s.loc['file_join']].value_counts()>1).sum()
 
+    #if duplicates exclude so return None and record in file
+    #other checks do not matter
+    #aligned exclusion with Spatial Center on 11/2
+    if num_invalid_geo_dups>1:
+        with open('file_issues.txt','a') as f:
+            f.write(f'''
 
+            {s.loc['file_path']} warning -- file excluded due to duplicates
+            Number of duplicate {s.loc['file_join']}: {str(num_invalid_geo_dups)}
 
+            ''')
 
-# auth = Gen3Auth(refresh_file='credentials.json')
-# sub = Gen3Submission(auth)
-# index = Gen3Index(auth)
+            
+            return None
+    
+    #if nas or length issues -- correct/ filter out but do not exclude
+    #but still flag in file
+    elif num_invalid_geo_na>0 or num_invalid_geo_length>0:
+        with open('file_issues.txt','a') as f:
+            f.write(f'''
 
-# #attempt to get files with subdirectory in name - but ran out of time
-# df = get_gen3_files(index)
-# df['len_file_name'] = df.file_name.apply(lambda x: len(x) if x else 0)
-# has_subdir = df.file_name.str.contains("metadata|moud|geometryFiles|\.csv")
-# df.sort_values(['md5sum','len_file_name']).groupby(['md5sum','file_size']).head(1).to_csv('file_subdirs.csv')
+            {s.loc['file_path']} warning -- no
+            duplicates so included but dropped missing geo ids and/or padded 0s
 
+            Number of invalid length {s.loc['file_join']}: {str(num_invalid_geo_length)}
+            (expected a length of {geo_lengths[s.file_join]})
 
-# sub.delete_nodes("JCOIN", "TEST", ['reference_file','core_metadata_collection'])
-# sub.delete_nodes("JCOIN", "OEPS", ['reference_file','core_metadata_collection'])
+            Number of missing {s.loc['file_join']}: {str(num_invalid_geo_na)}
+
+            ''')
+
+    #for all geo ids in the dataframe, pad with zeros if length less than expected
+    #if length greater than expected, unclear what it is supposed to be so make None
+    #some dataframes have foreign geo ids in addition to join (ie primary index geo id)
+    for geo_name,geo_length in geo_lengths.items():
+        if geo_name in df:
+            is_not_expected_len = df[geo_name].str.len()<geo_length
+            padded_with_zeros = df[geo_name].str.zfill(geo_length)
+            df[geo_name].where(is_not_expected_len,padded_with_zeros,inplace=True)
+
+    df_cleaned = (df
+        .loc[~df[s.loc['file_join']].isna()]
+        .set_index(s.loc['file_join'])
+    )
+    if with_file_prefix:
+        df_cleaned.columns = [s.loc['file_prefix']+"_"+ col for col in df_cleaned.columns]
+    return df_cleaned
