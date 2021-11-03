@@ -1,0 +1,37 @@
+submitter_id	title	description	source	subject	relation	data_type	type	projects.code	creator
+oeps_combined_county	Combined OEPS data	"The OEPS data from individual files 
+(see individual OEPS file metadata for more information) 
+was combined by the JCOIN DASC group for easier lookup and use of individual variables
+across files. Files were joined based on primary geographic key.
+See OEPS data documentation for more information.
+"	"Marynia Kolak, Qinyun Lin, Susan Paykin, Moksha Menghaney, & Angela Li. (2021, May 11). 
+GeoDaCenter/opioid-policy-scan: Opioid Environment Policy Scan Data Warehouse (Version v0.1-beta). 
+Zenodo. http://doi.org/10.5281/zenodo.4747876
+"	Combined	see OEPS metadata	County	core_metadata_collection	OEPS	JCOIN DASC
+oeps_combined_tract	Combined OEPS data	"The OEPS data from individual files 
+(see individual OEPS file metadata for more information) 
+was combined by the JCOIN DASC group for easier lookup and use of individual variables
+across files. Files were joined based on primary geographic key.
+See OEPS data documentation for more information.
+"	"Marynia Kolak, Qinyun Lin, Susan Paykin, Moksha Menghaney, & Angela Li. (2021, May 11). 
+GeoDaCenter/opioid-policy-scan: Opioid Environment Policy Scan Data Warehouse (Version v0.1-beta). 
+Zenodo. http://doi.org/10.5281/zenodo.4747876
+"	Combined	see OEPS metadata	Tract	core_metadata_collection	OEPS	JCOIN DASC
+oeps_combined_state	Combined OEPS data	"The OEPS data from individual files 
+(see individual OEPS file metadata for more information) 
+was combined by the JCOIN DASC group for easier lookup and use of individual variables
+across files. Files were joined based on primary geographic key.
+See OEPS data documentation for more information.
+"	"Marynia Kolak, Qinyun Lin, Susan Paykin, Moksha Menghaney, & Angela Li. (2021, May 11). 
+GeoDaCenter/opioid-policy-scan: Opioid Environment Policy Scan Data Warehouse (Version v0.1-beta). 
+Zenodo. http://doi.org/10.5281/zenodo.4747876
+"	Combined	see OEPS metadata	State	core_metadata_collection	OEPS	JCOIN DASC
+oeps_combined_zip	Combined OEPS data	"The OEPS data from individual files 
+(see individual OEPS file metadata for more information) 
+was combined by the JCOIN DASC group for easier lookup and use of individual variables
+across files. Files were joined based on primary geographic key.
+See OEPS data documentation for more information.
+"	"Marynia Kolak, Qinyun Lin, Susan Paykin, Moksha Menghaney, & Angela Li. (2021, May 11). 
+GeoDaCenter/opioid-policy-scan: Opioid Environment Policy Scan Data Warehouse (Version v0.1-beta). 
+Zenodo. http://doi.org/10.5281/zenodo.4747876
+"	Combined	see OEPS metadata	Zip	core_metadata_collection	OEPS	JCOIN DASC
