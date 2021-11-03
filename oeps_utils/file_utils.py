@@ -22,6 +22,9 @@ import shutil
 from pathlib import Path
 import yaml
 
+# general gen3 functions
+
+
 def get_md5sum(file_path):
     with open(file_path, "rb") as f:
         md5_hash = hashlib.md5()
@@ -84,11 +87,25 @@ def get_gen3_files(index):
     return df
 
 class Files:
-    def __init__(self,local_dir,credentials_path,endpoint):
 
+    def __init__(self,local_dir,credentials_path,endpoint):
         self.local_dir = Path(local_dir)
-        self.credentials_path = Path(credentials_path)
-        self.endpoint = endpoint
+        if credentials_path and endpoint:
+            self.credentials_path = Path(credentials_path)
+            self.endpoint = endpoint
+            self.auth = Gen3Auth(refresh_file=self.credentials_path.as_posix())
+            self.index = Gen3Index(self.endpoint, self.auth)
+
+            self.get_local_files()
+            self.get_gen3_files()
+
+    def get_local_files(self):
+        #read in files in directory
+        self.local_files_df = get_local_files(self.local_dir.as_posix())
+
+    def get_gen3_files(self):
+        #get gen3 files
+        self.gen3_files_df = get_gen3_files(self.index)
 
     def merge_local_and_gen3_file_info(self):
         ''' 
@@ -103,16 +120,9 @@ class Files:
             useful as currently only looks for file name in local submission history.
         2. Metadata submissions: to provide the file information necessary for metadata submission
         ''' 
-        auth = Gen3Auth(refresh_file=self.credentials_path.as_posix())
-        index = Gen3Index(self.endpoint, auth)
-        #read in files in directory
-        local_files_df = get_local_files(self.local_dir.as_posix())
-        #get gen3 files
-        gen3_files_df = get_gen3_files(index)
-
         files_df = (
-            local_files_df
-            .merge(gen3_files_df,
+            self.local_files_df
+            .merge(self.gen3_files_df,
                 on=['file_name','md5sum','file_size'],
                 how='left')#,
                 #validate='one_to_one')
@@ -127,7 +137,12 @@ class Files:
         Deletes the local gen3 history and uploads new files
         based on the md5sum and file name
 
-        TODO: upload all at once and with subdirectory
+        TODO: upload all at once and with subdirectory 
+        (may want to copy local files to a tmp folder as not sure its possible 
+        to download a user-defined list of files with gen3 client?)
+
+        TODO: another possibile improvement/alternative would be to support parallel 
+        processing uploads via this function here (see joblib.Parallel fxn)
         '''
 
         self.gen3_client_exe_path = Path(gen3_client_exe_path)
@@ -171,6 +186,11 @@ class Files:
     #         f'--include-subdirname=true'
     #     )
     #     return output.read()
+
+
+
+
+#OEPS specific functions
 
 def get_prefix(x):
     ''' 
